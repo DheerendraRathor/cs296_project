@@ -121,10 +121,6 @@ namespace cs296
     
     base_sim_t(); //!<It constructs the world and defines its gravity vector
 
-    inline const b2World* get_world(void){
-		return m_world;
-	}
-
     //! Virtual destructors - amazing objects. Why are these necessary?
     virtual ~base_sim_t(); //!< By using pointer of b2ContactListener(base class) we can delete instance of derived class base_sim_t.
     

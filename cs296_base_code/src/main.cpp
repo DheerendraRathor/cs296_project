@@ -27,11 +27,7 @@
 #include "render.hpp"
 #include "cs296_base.hpp"
 #include "callbacks.hpp"
-#include <iostream>
-#include <string>
-#include <sstream>
-#include <sys/time.h>
-using namespace std;
+
 //! GLUI is the library used for drawing the GUI
 //! Learn more about GLUI by reading the GLUI documentation
 //! Learn to use preprocessor diectives to make your code portable
@@ -126,7 +122,7 @@ int main(int argc, char** argv)
   test = entry->create_fcn();
 
   //! This initializes GLUT
-  /*glutInit(&argc, argv);
+  glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
   glutInitWindowSize(width, height);
 
@@ -145,37 +141,12 @@ int main(int argc, char** argv)
   glutMotionFunc(callbacks_t::mouse_motion_cb);
   glutKeyboardUpFunc(callbacks_t::keyboard_up_cb); 
   glutTimerFunc(frame_period, callbacks_t::timer_cb, 0);
-  
-  //!adyhg
 
   //! We create the GLUI user interface
   create_glui_ui();
 
   //! Enter the infinite GLUT event loop
-  glutMainLoop();*/
-  timeval tv[2];
-  settings_t* set = new settings_t;
-  int iteration;
-  istringstream(argv[1]) >> iteration;
-  float time=0.0,timeCollide=0.0,timeVelocity=0.0,timePosition=0.0;
-  int i;
-  gettimeofday(&tv[0],NULL);
-  for(i=0;i<iteration;i++)
-  {
-    test->step(set);
-    b2Profile prof= (test->get_world())->GetProfile();
-    time = time + prof.step;
-    timeCollide += prof.collide;
-    timeVelocity += prof.solveVelocity;
-    timePosition +=prof.solvePosition; 
-  }
-  gettimeofday(&tv[1],NULL);
-  //cout<<tv[1].tv_sec<<" "<<tv[1].tv_usec<<endl;
-  cout<<"Number of Iterations: "<<iteration<<endl;
-  cout<<"Average time per step is "<<time/iteration<<" ms"<<endl;
-  cout<<"Average time for collisions is "<<timeCollide/iteration<<" ms"<<endl;
-  cout<<"Average time for velocity is "<<timeVelocity/iteration<<" ms"<<endl;
-  cout<<"Average time for positions is "<<timePosition/iteration<<" ms"<<endl;
-  cout<<"Total loop time is "<<((tv[1].tv_sec- tv[0].tv_sec)*1000000+(tv[1].tv_usec-tv[0].tv_usec))/1000.0<<" ms"<<endl;
+  glutMainLoop();
+  
   return 0;
 }

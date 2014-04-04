@@ -148,4 +148,13 @@ doc:
 	@$(DOXYGEN) $(DOCDIR)/Doxyfile 2 > /dev/null
 	@$(ECHO) "Done"
 	
+report: setup exe
+	@mkdir plots; \
+	mkdir data; \
+	cd scripts; \
+	python3 g12_gen_csv.py; \
+	python3 g12_gen_plots.py; \
+	python3 g12_gen_html.py; \
+	cd ..
+
 
