@@ -1,0 +1,2742 @@
+# ========
+# captured on: Thu Apr 10 21:18:38 2014
+# hostname : ubuntu
+# os release : 3.8.0-35-generic
+# perf version : 3.8.13.13
+# arch : x86_64
+# nrcpus online : 4
+# nrcpus avail : 4
+# cpudesc : Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz
+# cpuid : GenuineIntel,6,58,9
+# total memory : 3944820 kB
+# cmdline : /usr/bin/perf_3.8.0-35 record -g -- /home/dheerendra/Desktop/project/cs296_base_code/bin/cs296_12_exe 10000 
+# event : name = cycles, type = 0, config = 0x0, config1 = 0x0, config2 = 0x0, excl_usr = 0, excl_kern = 0, excl_host = 0, excl_guest = 1, precise_ip = 0, id = { 96, 97, 98, 99 }
+# HEADER_CPU_TOPOLOGY info available, use -I to display
+# HEADER_NUMA_TOPOLOGY info available, use -I to display
+# pmu mappings: cpu = 4, software = 1, tracepoint = 2, uncore_cbox_0 = 6, uncore_cbox_1 = 7, breakpoint = 5
+# ========
+#
+# Samples: 6K of event 'cycles'
+# Event count (approx.): 5278165852
+#
+# Overhead       Command      Shared Object                                                                                                                           Symbol
+# ........  ............  .................  ...............................................................................................................................
+#
+    18.51%  cs296_12_exe  libm-2.15.so       [.] 0x000000000002d6bc                                                                                                         
+            |          
+            |--5.26%-- 0x2b9d5702f6fc
+            |          |          
+            |          |--26.85%-- 0x7fffbc407f80
+            |          |          
+            |          |--20.88%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--17.92%-- 0x72
+            |          |          
+            |          |--13.45%-- 0x426fffff3c888889
+            |          |          
+            |          |--1.50%-- 0x40e0e05cbf5d0345
+            |          |          
+            |          |--1.50%-- 0xc4f90a7b45303753
+            |          |          
+            |          |--1.50%-- 0x452e0bf545d76f91
+            |          |          
+            |          |--1.50%-- 0x40e19688bf61d578
+            |          |          
+            |          |--1.50%-- 0x40ea2d21c1ae842a
+            |          |          
+            |          |--1.50%-- 0x40e199f4bf629416
+            |          |          
+            |          |--1.50%-- 0x40bf85213f800000
+            |          |          
+            |          |--1.50%-- 0x40dfcf42bf55b780
+            |          |          
+            |          |--1.50%-- 0x40b086abc1aa86ef
+            |          |          
+            |          |--1.49%-- 0x40df4ad0bf525d0e
+            |          |          
+            |          |--1.49%-- 0x40a1ece7c1d71243
+            |          |          
+            |          |--1.49%-- 0x19
+            |          |          
+            |          |--1.48%-- 0x40e17fdabf621cfd
+            |          |          
+            |           --1.48%-- 0x41a8b38441142c98
+            |          
+            |--3.61%-- 0x2b9d5702f72a
+            |          |          
+            |          |--32.68%-- 0x7fffbc407f80
+            |          |          
+            |          |--13.07%-- 0x72
+            |          |          
+            |          |--10.75%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--8.71%-- 0x426fffff3c888889
+            |          |          
+            |          |--2.18%-- 0x40e174d8bf6148af
+            |          |          
+            |          |--2.18%-- 0xbf4b115b3f1be206
+            |          |          
+            |          |--2.18%-- 0x40dea3f4bf4e7a17
+            |          |          
+            |          |--2.18%-- 0x40e155d5bf602cc5
+            |          |          
+            |          |--2.18%-- 0xbef41a09bf61084d
+            |          |          
+            |          |--2.18%-- 0xbf6d5464bebff1b2
+            |          |          
+            |          |--2.18%-- 0x40e1c095bf62b86f
+            |          |          
+            |          |--2.18%-- 0x40e03588bf58635a
+            |          |          
+            |          |--2.18%-- 0xbeb8e72ebf6eb91d
+            |          |          
+            |          |--2.18%-- 0x40dfd873bf56bf04
+            |          |          
+            |          |--2.18%-- 0xbebeb9dabf6d9336
+            |          |          
+            |          |--2.17%-- 0xbe00cbdebf7df78b
+            |          |          
+            |          |--2.17%-- 0x41a55cfd40a19d1c
+            |          |          
+            |          |--2.16%-- 0x40fc6e3fc1100abc
+            |          |          
+            |          |--2.16%-- 0x40dd22adbf444026
+            |          |          
+            |           --2.16%-- 0x40e1d017bf631b11
+            |          
+            |--3.21%-- 0x2b9d5702f742
+            |          |          
+            |          |--26.93%-- 0x72
+            |          |          
+            |          |--24.39%-- 0x7fffbc407f80
+            |          |          
+            |          |--14.54%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--4.91%-- 0x426fffff3c888889
+            |          |          
+            |          |--2.45%-- 0x40dc3988c0a278a0
+            |          |          
+            |          |--2.45%-- 0x45307ac245d524b1
+            |          |          
+            |          |--2.45%-- 0x40df7dd1bf53a464
+            |          |          
+            |          |--2.45%-- 0x40e13d33bf5fc419
+            |          |          
+            |          |--2.45%-- 0xbf78792abe767adc
+            |          |          
+            |          |--2.45%-- 0x40676d98bea5c8b4
+            |          |          
+            |          |--2.45%-- 0x41bb58ac40ca905e
+            |          |          
+            |          |--2.45%-- 0x40dfbe47bf55a810
+            |          |          
+            |          |--2.45%-- 0x40e054a4bf597a55
+            |          |          
+            |          |--2.45%-- 0x40df0e1bbf511798
+            |          |          
+            |          |--2.44%-- 0xbf5328d83f10bba7
+            |          |          
+            |           --2.28%-- 0x40e0f5fbbf5d1280
+            |          
+            |--3.14%-- 0x2b9d5702f6f0
+            |          |          
+            |          |--40.05%-- 0x7fffbc407f80
+            |          |          
+            |          |--15.00%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--14.99%-- 0x72
+            |          |          
+            |          |--7.47%-- 0x426fffff3c888889
+            |          |          
+            |          |--2.51%-- 0x408bc8b1c1e1bccb
+            |          |          
+            |          |--2.51%-- 0x40e036f1bf585e35
+            |          |          
+            |          |--2.51%-- 0x40dfb9c5bf55617a
+            |          |          
+            |          |--2.51%-- 0x4086a154be4c91fe
+            |          |          
+            |          |--2.50%-- 0x4114edc3c0a9867e
+            |          |          
+            |          |--2.50%-- 0x40e12989bf5fc732
+            |          |          
+            |          |--2.50%-- 0xbf29002dbf4049ca
+            |          |          
+            |          |--2.49%-- 0x40e04734bf58ea6a
+            |          |          
+            |           --2.48%-- 0x409ae0d6c19c264e
+            |          
+            |--2.89%-- 0x2b9d5702f6e4
+            |          |          
+            |          |--32.48%-- 0x7fffbc407f80
+            |          |          
+            |          |--21.55%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--10.85%-- 0x72
+            |          |          
+            |          |--10.67%-- 0x426fffff3c888889
+            |          |          
+            |          |--2.72%-- 0x40d5a102c1b68ae6
+            |          |          
+            |          |--2.72%-- 0xbf769d053e895f8d
+            |          |          
+            |          |--2.72%-- 0x4198e9204089ef08
+            |          |          
+            |          |--2.72%-- 0x410dd6efc0fc9321
+            |          |          
+            |          |--2.72%-- 0xbdb6c793bf7efa7a
+            |          |          
+            |          |--2.72%-- 0x40e6d89a3ecac882
+            |          |          
+            |          |--2.72%-- 0x409337b6c19d00b9
+            |          |          
+            |          |--2.71%-- 0x411e850ec0ca3597
+            |          |          
+            |           --2.70%-- 0x40e023bebf584287
+            |          
+            |--2.83%-- 0x2b9d57030100
+            |          |          
+            |          |--33.36%-- 0x7fffbc407f80
+            |          |          
+            |          |--19.44%-- 0x72
+            |          |          
+            |          |--16.62%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--8.33%-- 0x426fffff3c888889
+            |          |          
+            |          |--2.78%-- 0x40e07505bf5a2a61
+            |          |          
+            |          |--2.78%-- 0x40dfffa0bf572329
+            |          |          
+            |          |--2.78%-- 0xbebed272bf6d8e46
+            |          |          
+            |          |--2.78%-- 0x40ddc099bf48ce30
+            |          |          
+            |          |--2.78%-- 0x40f69d4ac10bffe8
+            |          |          
+            |          |--2.78%-- 0x40e0e8fcbf5d0589
+            |          |          
+            |          |--2.78%-- 0x40df1989bf50cf1e
+            |          |          
+            |           --2.77%-- 0x40df94bbbf54270b
+            |          
+            |--2.82%-- 0x2b9d57030134
+            |          |          
+            |          |--27.82%-- 0x7fffbc407f80
+            |          |          
+            |          |--13.93%-- 0x72
+            |          |          
+            |          |--5.58%-- 0x426fffff3c888889
+            |          |          
+            |          |--5.57%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--2.79%-- 0x4119da6ac0d5c339
+            |          |          
+            |          |--2.79%-- 0x40fc1e2fc10ff5fb
+            |          |          
+            |          |--2.79%-- 0xbebadafcbf6e57be
+            |          |          
+            |          |--2.79%-- 0x40debd08bf4f37ac
+            |          |          
+            |          |--2.79%-- 0x40e23aafbf678770
+            |          |          
+            |          |--2.79%-- 0x40e197a9bf614476
+            |          |          
+            |          |--2.79%-- 0x41b990bb40f3a5b5
+            |          |          
+            |          |--2.79%-- 0x40bbd2d8bf5e4e53
+            |          |          
+            |          |--2.79%-- 0x419fead74095f788
+            |          |          
+            |          |--2.78%-- 0xbe3f99b8bf7b7a92
+            |          |          
+            |          |--2.78%-- 0x3fd4e133c1a4d145
+            |          |          
+            |          |--2.78%-- 0x40df7207bf53a658
+            |          |          
+            |          |--2.78%-- 0x7fff41a05b7e
+            |          |          
+            |          |--2.78%-- 0x3f6d926bbebebdd0
+            |          |          
+            |          |--2.77%-- 0x40df4837bf521378
+            |          |          
+            |          |--2.76%-- 0x41a48d5b41065d17
+            |          |          
+            |           --2.59%-- 0xc436eddd44b0f358
+            |          
+            |--2.66%-- 0x2b9d570300ec
+            |          |          
+            |          |--38.38%-- 0x7fffbc407f80
+            |          |          
+            |          |--14.79%-- 0x72
+            |          |          
+            |          |--8.68%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--2.96%-- 0x40dfa72bbf54e37c
+            |          |          
+            |          |--2.96%-- 0x40e0d9efbf5bab5c
+            |          |          
+            |          |--2.96%-- 0xb95245074348061f
+            |          |          
+            |          |--2.96%-- 0x40e07978bf5a0a1c
+            |          |          
+            |          |--2.96%-- 0x414cd24dc115c4ca
+            |          |          
+            |          |--2.96%-- 0xc4f90bc2453037ef
+            |          |          
+            |          |--2.96%-- 0x40df253cbf518abb
+            |          |          
+            |          |--2.96%-- 0x41181c5bc0fe9c40
+            |          |          
+            |          |--2.95%-- 0x40dfe71fbf56fed6
+            |          |          
+            |          |--2.94%-- 0x3f49340900000000
+            |          |          
+            |          |--2.93%-- 0x41ba047a40f2497f
+            |          |          
+            |          |--2.93%-- 0x40df14ccbf51247b
+            |          |          
+            |           --2.74%-- 0x416e21f1c1d5999a
+            |          
+            |--2.59%-- 0x2b9d5702f6d8
+            |          |          
+            |          |--36.36%-- 0x7fffbc407f80
+            |          |          
+            |          |--24.26%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--15.14%-- 0x72
+            |          |          
+            |          |--6.07%-- 0x426fffff3c888889
+            |          |          
+            |          |--3.04%-- 0x40b68975c19bc36e
+            |          |          
+            |          |--3.04%-- 0xbf6d91f53ebec015
+            |          |          
+            |          |--3.04%-- 0x40e199c7bf61f38f
+            |          |          
+            |          |--3.03%-- 0x40e033aabf5861e0
+            |          |          
+            |          |--3.03%-- 0x409a9b75c1dabec2
+            |          |          
+            |           --3.00%-- 0xbf2028f8bf47b630
+            |          
+            |--2.59%-- 0x2b9d570300f8
+            |          |          
+            |          |--39.47%-- 0x7fffbc407f80
+            |          |          
+            |          |--18.23%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--6.08%-- 0x72
+            |          |          
+            |          |--3.04%-- 0x426fffff3c888889
+            |          |          
+            |          |--3.04%-- 0x40dd5530bf45aaf0
+            |          |          
+            |          |--3.04%-- 0x40e106fdbf5e5048
+            |          |          
+            |          |--3.04%-- 0x45303e4845d55f84
+            |          |          
+            |          |--3.04%-- 0xbf1fd790bf47f75f
+            |          |          
+            |          |--3.04%-- 0x40f4b0eec1144fb6
+            |          |          
+            |          |--3.04%-- 0x40e71a103ec26afb
+            |          |          
+            |          |--3.04%-- 0x41b7bbc840f74e56
+            |          |          
+            |          |--3.03%-- 0x45304b7445d552be
+            |          |          
+            |          |--3.02%-- 0x40849f87bed89683
+            |          |          
+            |          |--3.01%-- 0x40451652c1a1bdf5
+            |          |          
+            |           --2.84%-- 0x40defb83bf50f328
+            |          
+            |--2.35%-- 0x2b9d5702f73a
+            |          |          
+            |          |--26.72%-- 0x7fffbc407f80
+            |          |          
+            |          |--23.38%-- 0x72
+            |          |          
+            |          |--9.81%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--6.68%-- 0x426fffff3c888889
+            |          |          
+            |          |--3.34%-- 0x41b637aa40f99b56
+            |          |          
+            |          |--3.34%-- 0x40dfe992bf56211b
+            |          |          
+            |          |--3.34%-- 0x40e17810bf60e9cc
+            |          |          
+            |          |--3.34%-- 0xbf79dec43e5ebe1d
+            |          |          
+            |          |--3.34%-- 0x40dfe3d6bf56995c
+            |          |          
+            |          |--3.34%-- 0x3f80000000000000
+            |          |          
+            |          |--3.34%-- 0xbf78d3453e70bb52
+            |          |          
+            |          |--3.34%-- 0x41b0286f41013f1f
+            |          |          
+            |          |--3.34%-- 0x40dceb3ebf431e9d
+            |          |          
+            |           --3.33%-- 0xbec929e5bf6b69bc
+            |          
+            |--2.27%-- 0x2b9d5702f73e
+            |          |          
+            |          |--37.78%-- 0x7fffbc407f80
+            |          |          
+            |          |--17.25%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--13.84%-- 0x426fffff3c888889
+            |          |          
+            |          |--13.83%-- 0x72
+            |          |          
+            |          |--3.46%-- 0x3f49340900000000
+            |          |          
+            |          |--3.46%-- 0x40d8b7cabf2c5e1e
+            |          |          
+            |          |--3.46%-- 0x40d5dd7ac19efddf
+            |          |          
+            |          |--3.46%-- 0x40b086a4c1aa86e7
+            |          |          
+            |           --3.46%-- 0x409aa933c1dabf56
+            |          
+            |--2.27%-- 0x2b9d5702f6f8
+            |          |          
+            |          |--27.49%-- 0x72
+            |          |          
+            |          |--20.76%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--20.62%-- 0x7fffbc407f80
+            |          |          
+            |          |--10.36%-- 0x426fffff3c888889
+            |          |          
+            |          |--3.46%-- 0xbf1a4aa4bf4c478e
+            |          |          
+            |          |--3.46%-- 0x40df0d47bf4fffc2
+            |          |          
+            |          |--3.46%-- 0xbe3258d4bf7c165b
+            |          |          
+            |          |--3.46%-- 0x40df2856bf51c64a
+            |          |          
+            |          |--3.46%-- 0x40dfa74fbf549060
+            |          |          
+            |           --3.46%-- 0x40e0651abf5a49f7
+            |          
+            |--2.22%-- 0x2b9d570300e8
+            |          |          
+            |          |--31.83%-- 0x72
+            |          |          
+            |          |--26.24%-- 0x7fffbc407f80
+            |          |          
+            |          |--10.39%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--6.85%-- 0x426fffff3c888889
+            |          |          
+            |          |--3.54%-- 0x410d9c8fc0a3c2ee
+            |          |          
+            |          |--3.54%-- 0x40a92cf3c1cf498b
+            |          |          
+            |          |--3.54%-- 0xbf58e4f7bf07fd03
+            |          |          
+            |          |--3.54%-- 0x40e0b92cbf5bc2f7
+            |          |          
+            |          |--3.54%-- 0x40df6e66bf52c9ea
+            |          |          
+            |          |--3.53%-- 0x41182668c0ff0d3f
+            |          |          
+            |           --3.47%-- 0x40dee2b3bf5012e0
+            |          
+            |--2.07%-- 0x2b9d57030140
+            |          |          
+            |          |--35.53%-- 0x7fffbc407f80
+            |          |          
+            |          |--15.19%-- 0x72
+            |          |          
+            |          |--3.80%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--3.80%-- 0x402b61c5c1a46847
+            |          |          
+            |          |--3.80%-- 0x426fffff3c888889
+            |          |          
+            |          |--3.80%-- 0x40446cafc1a04b22
+            |          |          
+            |          |--3.80%-- 0x4118198ec0fe8cde
+            |          |          
+            |          |--3.80%-- 0xbf699bbe3ed168f3
+            |          |          
+            |          |--3.79%-- 0x40d84cffbf2b75f2
+            |          |          
+            |          |--3.79%-- 0x411c796ec0b5977e
+            |          |          
+            |          |--3.79%-- 0x3fadea3ac1aa57ee
+            |          |          
+            |          |--3.79%-- 0x3f49340900000000
+            |          |          
+            |          |--3.79%-- 0x3bf5be00c1c919e9
+            |          |          
+            |          |--3.78%-- 0x40defa5abf50b999
+            |          |          
+            |           --3.76%-- 0x40df9230bf54e44a
+            |          
+            |--1.96%-- 0x2b9d570300cd
+            |          |          
+            |          |--28.13%-- 0x7fffbc407f80
+            |          |          
+            |          |--19.85%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--16.10%-- 0x72
+            |          |          
+            |          |--4.03%-- 0xc436ee6a44b0f220
+            |          |          
+            |          |--4.03%-- 0x41b9a7a440f363c1
+            |          |          
+            |          |--4.02%-- 0x40e138aebf5f5887
+            |          |          
+            |          |--4.02%-- 0x41a1cf05409ed519
+            |          |          
+            |          |--4.02%-- 0x40dfe126bf55e1db
+            |          |          
+            |          |--4.01%-- 0x40e0c740bf5c40c3
+            |          |          
+            |          |--4.01%-- 0x403d26dcc1b9cd85
+            |          |          
+            |          |--3.94%-- 0xc436edb144b0f3b9
+            |          |          
+            |           --3.85%-- 0x41320316c11c31f1
+            |          
+            |--1.88%-- 0x2b9d570300f4
+            |          |          
+            |          |--37.70%-- 0x7fffbc407f80
+            |          |          
+            |          |--20.97%-- 0x72
+            |          |          
+            |          |--20.92%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--4.20%-- 0x40e24d6c3f0c5188
+            |          |          
+            |          |--4.19%-- 0x40e08401bf5a6838
+            |          |          
+            |          |--4.19%-- 0x419b11b9410d60f3
+            |          |          
+            |          |--4.19%-- 0x40e067efbf5acf47
+            |          |          
+            |           --3.64%-- 0x3f800000
+            |          
+            |--1.80%-- 0x2b9d5702f6cc
+            |          |          
+            |          |--65.16%-- 0x7fffbc407f80
+            |          |          
+            |          |--8.72%-- 0x72
+            |          |          
+            |          |--4.37%-- 0x41a0326b4094ca18
+            |          |          
+            |          |--4.36%-- 0x419655e3411c652c
+            |          |          
+            |          |--4.36%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--4.35%-- 0x40bd5867c19c0a05
+            |          |          
+            |          |--4.34%-- 0x41ae2a0d4105f5dc
+            |          |          
+            |           --4.33%-- 0x40af8c0bc1c3ca80
+            |          
+            |--1.73%-- 0x2b9d5702f6e0
+            |          |          
+            |          |--36.40%-- 0x7fffbc407f80
+            |          |          
+            |          |--22.68%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--4.55%-- 0x41a61626410ae7f4
+            |          |          
+            |          |--4.55%-- 0x40e16307bf6094c8
+            |          |          
+            |          |--4.55%-- 0x40ac551ac1c7755d
+            |          |          
+            |          |--4.55%-- 0x72
+            |          |          
+            |          |--4.54%-- 0x40e21305bf647969
+            |          |          
+            |          |--4.54%-- 0xbf779c2bbe820111
+            |          |          
+            |          |--4.54%-- 0x40e149bdbf5f7cf0
+            |          |          
+            |          |--4.54%-- 0x40a200f4c1d74822
+            |          |          
+            |           --4.54%-- 0x40ee9213c11a50e5
+            |          
+            |--1.73%-- 0x2b9d5702f6ec
+            |          |          
+            |          |--40.92%-- 0x7fffbc407f80
+            |          |          
+            |          |--18.20%-- 0x72
+            |          |          
+            |          |--13.62%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--4.56%-- 0x41ac6f474105857a
+            |          |          
+            |          |--4.55%-- 0x40df7c10bf53d589
+            |          |          
+            |          |--4.55%-- 0x426fffff3c888889
+            |          |          
+            |          |--4.54%-- 0x40de892bbf4ddf38
+            |          |          
+            |          |--4.54%-- 0x400eaf25c1a5b45d
+            |          |          
+            |           --4.52%-- 0x40df934abf53c288
+            |          
+            |--1.72%-- 0x2b9d570300e0
+            |          |          
+            |          |--41.00%-- 0x7fffbc407f80
+            |          |          
+            |          |--22.83%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--4.57%-- 0x426fffff3c888889
+            |          |          
+            |          |--4.57%-- 0x41108d72c10212b2
+            |          |          
+            |          |--4.56%-- 0x41ad216340aee151
+            |          |          
+            |          |--4.56%-- 0x41b9477540f466af
+            |          |          
+            |          |--4.56%-- 0x419682a441166608
+            |          |          
+            |          |--4.56%-- 0x414cd24bc115c54a
+            |          |          
+            |          |--4.53%-- 0x72
+            |          |          
+            |           --4.26%-- 0x410d88d9c0a3ab9c
+            |          
+            |--1.72%-- 0x2b9d5702f67e
+            |          |          
+            |          |--32.03%-- 0x7fffbc407f80
+            |          |          
+            |          |--27.46%-- 0x426fffff3c888889
+            |          |          
+            |          |--22.53%-- 0x72
+            |          |          
+            |          |--4.58%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--4.58%-- 0x41bc789040e38b72
+            |          |          
+            |          |--4.55%-- 0x41182eedc0ff5075
+            |          |          
+            |           --4.28%-- 0x40df6e57bf53c5d9
+            |          
+            |--1.49%-- 0x2b9d57030126
+            |          |          
+            |          |--47.40%-- 0x7fffbc407f80
+            |          |          
+            |          |--26.35%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--10.53%-- 0x426fffff3c888889
+            |          |          
+            |          |--10.47%-- 0x72
+            |          |          
+            |           --5.25%-- 0x40dea1b6bf4e4997
+            |          
+            |--1.49%-- 0x2b9d5703012e
+            |          |          
+            |          |--47.37%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--21.05%-- 0x7fffbc407f80
+            |          |          
+            |          |--15.79%-- 0x72
+            |          |          
+            |          |--5.27%-- 0x40dfaea9bf557851
+            |          |          
+            |          |--5.26%-- 0x401d39c6c1b973b1
+            |          |          
+            |           --5.26%-- 0x40df1603bf505c41
+            |          
+            |--1.45%-- 0x2b9d570300a4
+            |          |          
+            |          |--43.53%-- 0x7fffbc407f80
+            |          |          
+            |          |--21.65%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--10.88%-- 0x72
+            |          |          
+            |          |--5.44%-- 0x45303a8345d5632a
+            |          |          
+            |          |--5.44%-- 0xb95245074348061f
+            |          |          
+            |          |--5.44%-- 0x426fffff3c888889
+            |          |          
+            |          |--5.08%-- 0x40df289cbf51d417
+            |          |          
+            |           --2.53%-- 0x59
+            |          
+            |--1.33%-- 0x2b9d5702f6c8
+            |          |          
+            |          |--29.32%-- 0x7fffbc407f80
+            |          |          
+            |          |--23.60%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--11.80%-- 0x72
+            |          |          
+            |          |--5.90%-- 0x41bbeb3240ce4421
+            |          |          
+            |          |--5.90%-- 0x40e169b5bf60d506
+            |          |          
+            |          |--5.90%-- 0x41bab10040c78f6e
+            |          |          
+            |          |--5.89%-- 0x40ce3eefc1b96afb
+            |          |          
+            |          |--5.89%-- 0x41b0510e40b99725
+            |          |          
+            |           --5.79%-- 0x40e14932bf5ff784
+            |          
+            |--1.33%-- 0x2b9d570300bd
+            |          |          
+            |          |--41.05%-- 0x7fffbc407f80
+            |          |          
+            |          |--11.85%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--11.76%-- 0x426fffff3c888889
+            |          |          
+            |          |--11.66%-- 0x72
+            |          |          
+            |          |--5.93%-- 0x40e82a133ea4a451
+            |          |          
+            |          |--5.92%-- 0xbf7cc1f33e2275e2
+            |          |          
+            |          |--5.92%-- 0x40e8de42c1a5dccf
+            |          |          
+            |           --5.91%-- 0x3f809350c1ad017e
+            |          
+            |--1.26%-- 0x2b9d5702f6d4
+            |          |          
+            |          |--37.49%-- 0x7fffbc407f80
+            |          |          
+            |          |--25.02%-- 0x72
+            |          |          
+            |          |--18.71%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--6.26%-- 0x40dc9cd0bf4170bf
+            |          |          
+            |          |--6.26%-- 0x3f6d9dbebebe855a
+            |          |          
+            |           --6.26%-- 0x40dfe86dbf56d0cc
+            |          
+            |--1.26%-- 0x2b9d5702f6c0
+            |          |          
+            |          |--25.01%-- 0x7fffbc407f80
+            |          |          
+            |          |--12.52%-- 0x72
+            |          |          
+            |          |--12.51%-- 0x426fffff3c888889
+            |          |          
+            |          |--6.26%-- 0x411e83d3c0ca304f
+            |          |          
+            |          |--6.26%-- 0x41b407a340bb77c7
+            |          |          
+            |          |--6.26%-- 0x40f49142c11f75e7
+            |          |          
+            |          |--6.26%-- 0x40e105d1bf5e1c40
+            |          |          
+            |          |--6.26%-- 0x411913ffc0b3ca1d
+            |          |          
+            |          |--6.26%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--6.25%-- 0x40e07caebf5af4c3
+            |          |          
+            |           --6.17%-- 0x410c17a4c087382f
+            |          
+            |--1.26%-- 0x2b9d5702f69e
+            |          |          
+            |          |--43.72%-- 0x7fffbc407f80
+            |          |          
+            |          |--25.00%-- 0x72
+            |          |          
+            |          |--6.26%-- 0x426fffff3c888889
+            |          |          
+            |          |--6.26%-- 0x40e02183bf581abd
+            |          |          
+            |          |--6.26%-- 0x40de76a4bf4d0fff
+            |          |          
+            |          |--6.26%-- 0x40e15ee6bf5ffa5d
+            |          |          
+            |           --6.24%-- 0x40e191fbbf61889d
+            |          
+            |--1.26%-- 0x2b9d57030122
+            |          |          
+            |          |--56.27%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--31.25%-- 0x72
+            |          |          
+            |          |--6.26%-- 0x405aa891c1bc17c7
+            |          |          
+            |           --6.22%-- 0x3f864d78c1ad39c3
+            |          
+            |--1.26%-- 0x2b9d57030144
+            |          |          
+            |          |--25.08%-- 0x72
+            |          |          
+            |          |--24.99%-- 0x7fffbc407f80
+            |          |          
+            |          |--6.27%-- 0x40df1392bf513bef
+            |          |          
+            |          |--6.26%-- 0x40e1d5ddbf63ff75
+            |          |          
+            |          |--6.26%-- 0x41a36b1340a1c9ae
+            |          |          
+            |          |--6.26%-- 0x41094909c10582d6
+            |          |          
+            |          |--6.25%-- 0x40e046bebf58abed
+            |          |          
+            |          |--6.25%-- 0x40fea799c0972e66
+            |          |          
+            |          |--6.23%-- 0x4117e0fac0fbb80c
+            |          |          
+            |           --6.15%-- 0x40e0ff81bf5daebf
+            |          
+            |--1.25%-- 0x2b9d5703013c
+            |          |          
+            |          |--43.90%-- 0x72
+            |          |          
+            |          |--25.14%-- 0x7fffbc407f80
+            |          |          
+            |          |--6.29%-- 0x3fc89454c1a307ec
+            |          |          
+            |          |--6.28%-- 0x41a3c3e341059dad
+            |          |          
+            |          |--6.28%-- 0x40e0bcda3f2da945
+            |          |          
+            |          |--6.25%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |           --5.87%-- 0x40e19882bf617ee0
+            |          
+            |--1.25%-- 0x2b9d5702f6a2
+            |          |          
+            |          |--49.88%-- 0x7fffbc407f80
+            |          |          
+            |          |--12.54%-- 0x426fffff3c888889
+            |          |          
+            |          |--6.29%-- 0x411e6929c0ca957b
+            |          |          
+            |          |--6.28%-- 0x72
+            |          |          
+            |          |--6.28%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--6.27%-- 0x59
+            |          |          
+            |          |--6.27%-- 0x419ee96f410ef017
+            |          |          
+            |           --6.19%-- 0x3f9c8749c1acb79f
+            |          
+            |--1.10%-- 0x2b9d5702f604
+            |          |          
+            |          |--35.74%-- 0x7fffbc407f80
+            |          |          
+            |          |--21.42%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--14.26%-- 0x426fffff3c888889
+            |          |          
+            |          |--7.15%-- 0x40dde1cfbf4a438e
+            |          |          
+            |          |--7.15%-- 0x72
+            |          |          
+            |          |--7.15%-- 0x40424f7cc1b80e69
+            |          |          
+            |           --7.14%-- 0x40e12a70bf5f1a7f
+            |          
+            |--1.10%-- 0x2b9d5702f600
+            |          |          
+            |          |--42.75%-- 0x7fffbc407f80
+            |          |          
+            |          |--21.49%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--21.46%-- 0x72
+            |          |          
+            |          |--7.16%-- 0x41971dc0408882e8
+            |          |          
+            |           --7.14%-- 0x40df5216bf5272ea
+            |          
+            |--1.10%-- 0x2b9d5702f69a
+            |          |          
+            |          |--49.79%-- 0x7fffbc407f80
+            |          |          
+            |          |--14.37%-- 0x72
+            |          |          
+            |          |--7.19%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--7.19%-- 0xbee29d67bf658f28
+            |          |          
+            |          |--7.19%-- 0xbf79d5b93e5f6033
+            |          |          
+            |          |--7.15%-- 0x3e467f17bf7b24ef
+            |          |          
+            |           --7.12%-- 0xbf7ffed7bbc30412
+            |          
+            |--1.09%-- 0x2b9d570300d0
+            |          |          
+            |          |--50.21%-- 0x7fffbc407f80
+            |          |          
+            |          |--28.20%-- 0x72
+            |          |          
+            |          |--7.20%-- 0x40df2931bf51c400
+            |          |          
+            |          |--7.20%-- 0x426fffff3c888889
+            |          |          
+            |           --7.19%-- 0x40e0a253bf5b90e5
+            |          
+            |--1.09%-- 0x2b9d5703010e
+            |          |          
+            |          |--49.54%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--21.63%-- 0x7fffbc407f80
+            |          |          
+            |          |--21.62%-- 0x72
+            |          |          
+            |           --7.20%-- 0x40b33860c19ba3d0
+            |          
+            |--0.94%-- 0x2b9d5702f6ab
+            |          |          
+            |          |--24.98%-- 0x7fffbc407f80
+            |          |          
+            |          |--16.68%-- 0x72
+            |          |          
+            |          |--16.67%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--16.65%-- 0x426fffff3c888889
+            |          |          
+            |          |--8.34%-- 0x40f4b175c11479ae
+            |          |          
+            |          |--8.34%-- 0x40deafdcbf4d94ac
+            |          |          
+            |           --8.34%-- 0x40df4978bf53434b
+            |          
+            |--0.94%-- 0x2b9d5702ef35
+            |          
+            |--0.94%-- 0x2b9d5702ef8a
+            |          
+            |--0.87%-- 0x2b9d570300dc
+            |          |          
+            |          |--36.32%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--18.20%-- 0x7fffbc407f80
+            |          |          
+            |          |--9.10%-- 0x3e8e3c193f75ec64
+            |          |          
+            |          |--9.10%-- 0x41175155c0e4e319
+            |          |          
+            |          |--9.10%-- 0x411e65d7c0caa91b
+            |          |          
+            |          |--9.09%-- 0x72
+            |          |          
+            |           --9.09%-- 0x40e17618bf60903d
+            |          
+            |--0.86%-- 0x2b9d5702f716
+            |          |          
+            |          |--45.41%-- 0x7fffbc407f80
+            |          |          
+            |          |--18.20%-- 0x72
+            |          |          
+            |          |--9.11%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--9.10%-- 0x426fffff3c888889
+            |          |          
+            |          |--9.09%-- 0x58
+            |          |          
+            |           --9.09%-- 0x40682983c1a245e7
+            |          
+            |--0.86%-- 0x2b9d5702f696
+            |          |          
+            |          |--45.66%-- 0x7fffbc407f80
+            |          |          
+            |          |--18.27%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--17.81%-- 0x72
+            |          |          
+            |          |--9.14%-- 0x40dec99ebf4f20c7
+            |          |          
+            |           --9.12%-- 0xbf24ecdfbf43cb80
+            |          
+            |--0.79%-- 0x2b9d5703012a
+            |          |          
+            |          |--39.96%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |          |--20.02%-- 0x7fffbc407f80
+            |          |          
+            |          |--10.01%-- 0x40e09311bf59872a
+            |          |          
+            |          |--10.01%-- 0x4114e935c0a99326
+            |          |          
+            |          |--10.00%-- 0x72
+            |          |          
+            |           --9.99%-- 0x40deeda2bf501585
+            |          
+            |--0.78%-- 0x2b9d5702eec0
+            |          |          
+            |          |--89.96%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |           --10.04%-- 0x72
+            |          
+            |--0.71%-- 0x2b9d5702eed1
+            |          
+            |--0.63%-- 0x2b9d5702ef54
+            |          
+            |--0.63%-- 0x2b9d5702f6b8
+            |          |          
+            |          |--62.43%-- 0x7fffbc407f80
+            |          |          
+            |           --37.57%-- 0x72
+            |          
+            |--0.63%-- 0x2b9d5702eee9
+            |          
+            |--0.63%-- 0x2b9d5702efcb
+            |          
+            |--0.60%-- 0x2b9d5702f6bc
+            |          |          
+            |          |--26.23%-- 0x72
+            |          |          
+            |          |--13.13%-- 0x7fffbc407f80
+            |          |          
+            |          |--13.12%-- 0x41065b4fc1011958
+            |          |          
+            |          |--13.12%-- 0x41a2aca640a72376
+            |          |          
+            |          |--13.12%-- 0x40e3266d3f056cb4
+            |          |          
+            |          |--13.06%-- 0xbf6d924b3ebebe6e
+            |          |          
+            |           --8.22%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |                     0x0
+            |          
+            |--0.55%-- 0x2b9d5702eec8
+            |          
+            |--0.55%-- 0x2b9d5703011e
+            |          |          
+            |          |--57.22%-- 0x7fffbc407f80
+            |          |          
+            |          |--14.31%-- 0x3e9089c63f759661
+            |          |          
+            |          |--14.29%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          0x0
+            |          |          
+            |           --14.18%-- 0x426fffff3c888889
+             --11.36%-- [...]
+
+    11.23%  cs296_12_exe  cs296_12_exe       [.] b2ContactSolver::SolveVelocityConstraints()                                                                                
+            |
+            --- b2ContactSolver::SolveVelocityConstraints()
+
+     9.69%  cs296_12_exe  cs296_12_exe       [.] b2RevoluteJoint::SolveVelocityConstraints(b2SolverData const&)                                                             
+            |
+            --- b2RevoluteJoint::SolveVelocityConstraints(b2SolverData const&)
+               |          
+               |--93.74%-- 0x83f800000
+                --6.26%-- [...]
+
+     5.68%  cs296_12_exe  cs296_12_exe       [.] b2RevoluteJoint::SolvePositionConstraints(b2SolverData const&)                                                             
+            |
+            --- b2RevoluteJoint::SolvePositionConstraints(b2SolverData const&)
+               |          
+               |--97.69%-- 0x83f800000
+                --2.31%-- [...]
+
+     4.53%  cs296_12_exe  cs296_12_exe       [.] b2Mat33::Solve22(b2Vec2 const&) const                                                                                      
+            |
+            --- b2Mat33::Solve22(b2Vec2 const&) const
+                0x83f800000
+
+     3.96%  cs296_12_exe  cs296_12_exe       [.] b2ContactSolver::SolvePositionConstraints()                                                                                
+            |
+            --- b2ContactSolver::SolvePositionConstraints()
+
+     3.40%  cs296_12_exe  cs296_12_exe       [.] b2World::Step(float, int, int)                                                                                             
+            |
+            --- b2World::Step(float, int, int)
+               |          
+               |--98.97%-- 0x800000000d
+               |          0x1d6d320
+               |          
+               |--0.60%-- 0x800000000b
+               |          0x1d6d320
+                --0.43%-- [...]
+
+     3.00%  cs296_12_exe  cs296_12_exe       [.] b2FindMaxSeparation(int*, b2PolygonShape const*, b2Transform const&, b2PolygonShape const*, b2Transform const&)            
+            |
+            --- b2FindMaxSeparation(int*, b2PolygonShape const*, b2Transform const&, b2PolygonShape const*, b2Transform const&)
+
+     2.59%  cs296_12_exe  libm-2.15.so       [.] sincosf                                                                                                                    
+            |
+            --- sincosf
+               |          
+               |--26.96%-- 0x83f800000
+               |          
+               |--23.08%-- 0x7fffbc407f80
+               |          
+               |--12.95%-- 0x72
+               |          |          
+               |           --100.00%-- 0x8b
+               |          
+               |--2.24%-- 0x800000000d
+               |          0x1d6d320
+               |          
+               |--1.69%-- 0x426fffff3c888889
+               |          
+               |--0.56%-- 0xbf41d6df3f273827
+               |          
+               |--0.56%-- 0x40dead0fbf4eb60a
+               |          
+               |--0.56%-- 0x40e0bd42bf5c1a4e
+               |          
+               |--0.56%-- 0xbf36db023f332a13
+               |          
+               |--0.56%-- 0x3f49340900000000
+               |          
+               |--0.56%-- 0x7fff4199f175
+               |          
+               |--0.56%-- 0x40e16b7abf610e25
+               |          
+               |--0.56%-- 0xbf504ee43f14cebf
+               |          
+               |--0.56%-- 0x40dfdd58bf564705
+               |          
+               |--0.56%-- 0x40dbdb42c0a2fa8f
+               |          
+               |--0.56%-- 0x40b5dfa7c1c3c301
+               |          
+               |--0.56%-- 0x40e07994bf596225
+               |          
+               |--0.56%-- 0x40df8783bf546785
+               |          
+               |--0.56%-- 0x40e028993e4b2d8c
+               |          
+               |--0.56%-- 0x7fffc6241b41
+               |          
+               |--0.56%-- 0x3f769d0ac1ae6883
+               |          
+               |--0.56%-- 0xc436ef3344b0f060
+               |          
+               |--0.56%-- 0x40f4b2fec1146410
+               |          
+               |--0.56%-- 0x40e04166bf596598
+               |          
+               |--0.56%-- 0x405d52e2c1a07ac1
+               |          
+               |--0.56%-- 0x40b6315ac1c04495
+               |          
+               |--0.56%-- 0xbf7ab1823e4f6a68
+               |          
+               |--0.56%-- 0x40dec98dbf4f4eb8
+               |          
+               |--0.56%-- 0x40df3c11bf51f55e
+               |          
+               |--0.56%-- 0x40d6e92bbf237e91
+               |          
+               |--0.56%-- 0x41174e80c0e4edb7
+               |          
+               |--0.56%-- 0x41ab71ad41062770
+               |          
+               |--0.56%-- 0x4069644ec1a2acad
+               |          
+               |--0.56%-- 0x40df73edbf53e13e
+               |          
+               |--0.56%-- 0x40df0896bf51053d
+               |          
+               |--0.56%-- 0xc0b1dca100000000
+               |          
+               |--0.56%-- 0x411750b4c0e4e550
+               |          
+               |--0.56%-- 0x410399193e49f7c8
+               |          
+               |--0.56%-- 0x40e091a7bf5b5996
+               |          
+               |--0.56%-- 0x40dfc3f1bf556e27
+               |          
+               |--0.56%-- 0x41a36f4f4108d36f
+               |          
+               |--0.56%-- 0x40dae94fbf38be1a
+               |          
+               |--0.56%-- 0x40e1eb0abf624e04
+               |          
+               |--0.56%-- 0x40ded31dbf4f24f3
+               |          
+               |--0.56%-- 0x1d79590
+               |          
+               |--0.56%-- 0x40ea144c3e5fa40a
+               |          
+               |--0.56%-- 0x7fffbc408030
+               |          
+               |--0.56%-- 0x419b47a240a3eb91
+               |          
+               |--0.55%-- 0x410bbcd7c116c06a
+               |          
+               |--0.55%-- 0x40df96a0bf54bf93
+               |          
+               |--0.54%-- 0xbe41201ebf7b67e7
+               |          
+               |--0.52%-- 0x41969b9d40860d37
+                --6.72%-- [...]
+
+     2.50%  cs296_12_exe  cs296_12_exe       [.] debug_draw_t::DrawSolidPolygon(b2Vec2 const*, int, b2Color const&)                                                         
+            |
+            --- debug_draw_t::DrawSolidPolygon(b2Vec2 const*, int, b2Color const&)
+               |          
+               |--98.83%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+               |          |          
+               |          |--92.93%-- 0x0
+               |          |          
+               |          |--2.36%-- 0x1d71630
+               |          |          
+               |          |--1.77%-- 0x1d71690
+               |          |          
+               |          |--0.59%-- 0x1d73670
+               |          |          
+               |          |--0.59%-- 0x1d736d0
+               |          |          
+               |          |--0.59%-- 0x1d71810
+               |          |          
+               |          |--0.59%-- 0x1d73730
+               |          |          
+               |           --0.58%-- 0x1d71870
+               |          
+                --1.17%-- 0x0
+
+     2.13%  cs296_12_exe  cs296_12_exe       [.] b2Island::Solve(b2Profile*, b2TimeStep const&, b2Vec2 const&, bool)                                                        
+            |
+            --- b2Island::Solve(b2Profile*, b2TimeStep const&, b2Vec2 const&, bool)
+               |          
+               |--16.91%-- 0x1
+               |          
+               |--2.05%-- 0x0
+               |          
+               |--0.69%-- 0xbd58a0a941b2e2ac
+               |          
+               |--0.69%-- 0x3e2b04dd41b2e2ac
+               |          
+               |--0.69%-- 0xc0a956e100000007
+               |          
+               |--0.69%-- 0x3200000001
+               |          
+               |--0.69%-- 0x40db1f8600000037
+               |          
+               |--0.69%-- 0xbf7f559e
+               |          
+               |--0.69%-- 0xbe660120be051400
+               |          
+               |--0.69%-- 0xc0fc9de60000000f
+               |          
+               |--0.69%-- 0x40cc10a500000041
+               |          
+               |--0.69%-- 0xc19d2fa000000047
+               |          
+               |--0.69%-- 0x4113440f00000034
+               |          
+               |--0.69%-- 0xc014a5a600000028
+               |          
+               |--0.69%-- 0xbf7c5636
+               |          
+               |--0.69%-- 0x3ec9bf1ebf6b2065
+               |          
+               |--0.68%-- 0xbf7c7c45
+               |          
+               |--0.68%-- 0x4107d08800000031
+               |          
+               |--0.68%-- 0xbd007900be7a7540
+               |          
+               |--0.68%-- 0x3100000001
+               |          
+               |--0.68%-- 0x3e28aa5441b2e2ac
+               |          
+               |--0.68%-- 0xc101554c00000010
+               |          
+               |--0.68%-- 0x3ebb72fc3f800000
+               |          
+               |--0.68%-- 0xc0f3156c0000000e
+               |          
+               |--0.68%-- 0x40f3356a0000002c
+               |          
+               |--0.68%-- 0xbf7c8cf7
+               |          
+               |--0.68%-- 0xbf7fa468
+               |          
+               |--0.68%-- 0x410544870000003d
+               |          
+               |--0.68%-- 0x3fa1f1d8bf870e20
+               |          
+               |--0.68%-- 0xbf7c3805
+               |          
+               |--0.68%-- 0x41181d3e00000034
+               |          
+               |--0.68%-- 0xc1b9cdd100000057
+               |          
+               |--0.68%-- 0xc1cf5bef00000064
+               |          
+               |--0.68%-- 0xc09eab4c00000005
+               |          
+               |--0.68%-- 0xc109aa490000001b
+               |          
+               |--0.68%-- 0xc1bc4e420000005b
+               |          
+               |--0.68%-- 0x800000000d
+               |          0x1d6d320
+               |          
+               |--0.68%-- 0xc0ce52b300000071
+               |          
+               |--0.68%-- 0x3f19999a41b2e2ac
+               |          
+               |--0.68%-- 0xc1b53ab400000054
+               |          
+               |--0.68%-- 0xbf7f882a
+               |          
+               |--0.68%-- 0x3c23d70a
+               |          
+               |--0.68%-- 0xbe164800be57fec0
+               |          
+               |--0.68%-- 0x40b5b6ed0000002f
+               |          
+               |--0.68%-- 0x3e27f44e00000001
+               |          
+               |--0.68%-- 0x3fabb208bf19e368
+               |          
+               |--0.68%-- 0x410773fd00000032
+               |          
+               |--0.68%-- 0xc1b82ad000000056
+               |          
+               |--0.68%-- 0xc1b037a300000054
+               |          
+               |--0.68%-- 0x3f3955383fbd6cb0
+               |          
+               |--0.68%-- 0x3e28c25e00000000
+               |          
+               |--0.67%-- 0xc1dabba840bfc291
+               |          
+               |--0.65%-- 0xbf7f99c0
+               |          
+               |--0.64%-- 0x41180000b9b89000
+               |          
+               |--0.64%-- 0x40fcd81b0000002c
+               |          
+               |--0.64%-- 0x2f00000001
+               |          
+               |--0.62%-- 0x413e2d1f0000003d
+                --43.65%-- [...]
+
+     2.13%  cs296_12_exe  cs296_12_exe       [.] b2RevoluteJoint::InitVelocityConstraints(b2SolverData const&)                                                              
+            |
+            --- b2RevoluteJoint::InitVelocityConstraints(b2SolverData const&)
+               |          
+               |--91.13%-- 0x83f800000
+                --8.87%-- [...]
+
+     2.12%  cs296_12_exe  cs296_12_exe       [.] b2World::SolveTOI(b2TimeStep const&)                                                                                       
+            |
+            --- b2World::SolveTOI(b2TimeStep const&)
+               |          
+               |--58.20%-- 0x800000000d
+               |          0x1d6d320
+               |          
+               |--1.36%-- 0x26
+               |          
+               |--0.69%-- 0xc0ce52cd00000071
+               |          
+               |--0.69%-- 0xc1b38cb70000006e
+               |          
+               |--0.69%-- 0xbf522ee800000022
+               |          
+               |--0.69%-- 0xc109abb60000001b
+               |          
+               |--0.69%-- 0xc0ce529a00000071
+               |          
+               |--0.69%-- 0xc014a4fe00000028
+               |          
+               |--0.69%-- 0xc0ce52ca00000071
+               |          
+               |--0.69%-- 0xbf522f7800000022
+               |          
+               |--0.69%-- 0xbef4a87000000022
+               |          
+               |--0.69%-- 0xc0ce529600000071
+               |          
+               |--0.69%-- 0x40fc910100000041
+               |          
+               |--0.69%-- 0x40e66cd100000028
+               |          
+               |--0.69%-- 0xc0ce52b900000071
+               |          
+               |--0.69%-- 0xc04f52790000005c
+               |          
+               |--0.69%-- 0xc0a275d000000001
+               |          
+               |--0.69%-- 0xc10ca5340000001a
+               |          
+               |--0.69%-- 0xc04f4fb00000005c
+               |          
+               |--0.69%-- 0xbf522fe000000022
+               |          
+               |--0.69%-- 0xc0c7b1610000000a
+               |          
+               |--0.69%-- 0xc0ce52ba00000071
+               |          
+               |--0.69%-- 0xbf522d1800000022
+               |          
+               |--0.69%-- 0xc0ce52d400000071
+               |          
+               |--0.69%-- 0xc0b5c1fd0000000b
+               |          
+               |--0.69%-- 0xc04f341a0000005c
+               |          
+               |--0.69%-- 0x40c8b86600000041
+               |          
+               |--0.69%-- 0xbf40a66800000022
+               |          
+               |--0.69%-- 0xc0ce52c300000071
+               |          
+               |--0.69%-- 0xc1d35ea800000063
+               |          
+               |--0.69%-- 0xc0cacc040000000b
+               |          
+               |--0.69%-- 0x3f2e2c7900000026
+               |          
+               |--0.69%-- 0xc0b3ffca00000008
+               |          
+               |--0.69%-- 0xbf52405800000022
+               |          
+               |--0.69%-- 0x3f2e2df500000027
+               |          
+               |--0.69%-- 0xc19bd14800000048
+               |          
+               |--0.69%-- 0xc117e05200000019
+               |          
+               |--0.69%-- 0xc0ce529c00000071
+               |          
+               |--0.69%-- 0xc0ce52be00000071
+               |          
+               |--0.69%-- 0xbf522e7000000022
+               |          
+               |--0.69%-- 0xc109eb7c0000001b
+               |          
+               |--0.69%-- 0xc10a22b90000001b
+               |          
+               |--0.69%-- 0xc0d5c3bb0000000c
+               |          
+               |--0.69%-- 0xbf522db000000022
+               |          
+               |--0.69%-- 0xc0ce52bf00000071
+               |          
+               |--0.69%-- 0xc1e1afcb0000005f
+               |          
+               |--0.69%-- 0xc0ce529d00000071
+               |          
+               |--0.69%-- 0x40fd29d90000002e
+               |          
+               |--0.69%-- 0xc1056d2a00000011
+               |          
+               |--0.69%-- 0xc10224cf0000001c
+               |          
+               |--0.69%-- 0xc1bb145500000059
+               |          
+               |--0.68%-- 0xc109a6c70000001a
+               |          
+               |--0.68%-- 0xc0a8e35900000007
+               |          
+               |--0.68%-- 0xc1c6928400000048
+               |          
+               |--0.68%-- 0xc0ce52c700000071
+               |          
+               |--0.68%-- 0xc0ce52b700000071
+               |          
+               |--0.68%-- 0xc10544c90000001c
+               |          
+               |--0.68%-- 0xc04f3ef30000005c
+               |          
+               |--0.68%-- 0xc109a1c90000001a
+               |          
+               |--0.64%-- 0xc0c3480200000009
+               |          
+                --0.64%-- 0xc0c8b10d0000000a
+
+     2.00%  cs296_12_exe  cs296_12_exe       [.] b2ContactManager::Collide()                                                                                                
+            |
+            --- b2ContactManager::Collide()
+               |          
+               |--72.35%-- 0x0
+               |          
+               |--8.02%-- 0x1d736d0
+               |          
+               |--7.98%-- 0x1d73790
+               |          
+               |--3.64%-- 0x1d73670
+               |          
+               |--2.91%-- 0x1d73730
+               |          
+               |--2.18%-- 0x1d734f0
+               |          
+               |--0.73%-- 0x1d73250
+               |          
+               |--0.73%-- 0x1d73490
+               |          
+               |--0.73%-- 0x1d71870
+               |          
+                --0.73%-- 0x1d73430
+
+     1.66%  cs296_12_exe  cs296_12_exe       [.] b2PolygonShape::ComputeAABB(b2AABB*, b2Transform const&, int) const                                                        
+            |
+            --- b2PolygonShape::ComputeAABB(b2AABB*, b2Transform const&, int) const
+               |          
+               |--95.90%-- 0x0
+               |          
+               |--0.88%-- 0x1d736d0
+               |          
+               |--0.88%-- 0x1d71630
+               |          
+               |--0.88%-- 0x1d71810
+               |          
+               |--0.82%-- 0x1d73670
+                --0.65%-- [...]
+
+     1.58%  cs296_12_exe  cs296_12_exe       [.] operator+(b2Vec2 const&, b2Vec2 const&)                                                                                    
+            |
+            --- operator+(b2Vec2 const&, b2Vec2 const&)
+                debug_draw_t::DrawSolidCircle(b2Vec2 const&, float, b2Vec2 const&, b2Color const&)
+                _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+                (nil)
+
+     1.54%  cs296_12_exe  cs296_12_exe       [.] debug_draw_t::DrawSolidCircle(b2Vec2 const&, float, b2Vec2 const&, b2Color const&)                                         
+            |
+            --- debug_draw_t::DrawSolidCircle(b2Vec2 const&, float, b2Vec2 const&, b2Color const&)
+                _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+                (nil)
+
+     1.39%  cs296_12_exe  cs296_12_exe       [.] operator*(float, b2Vec2 const&)                                                                                            
+            |
+            --- operator*(float, b2Vec2 const&)
+                debug_draw_t::DrawSolidCircle(b2Vec2 const&, float, b2Vec2 const&, b2Color const&)
+                _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+                (nil)
+
+     1.36%  cs296_12_exe  cs296_12_exe       [.] _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48                                                    
+            |
+            --- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+               |          
+               |--90.42%-- 0x0
+               |          
+               |--2.14%-- 0x1d734f0
+               |          
+               |--2.12%-- 0x1d73370
+               |          
+               |--1.07%-- 0x1d731f0
+               |          
+               |--1.07%-- 0x1d73730
+               |          
+               |--1.07%-- 0x1d73430
+               |          
+               |--1.07%-- 0x1d73250
+               |          
+                --1.03%-- 0x1d71690
+
+     1.23%  cs296_12_exe  cs296_12_exe       [.] b2ContactSolver::b2ContactSolver(b2ContactSolverDef*)                                                                      
+            |
+            --- b2ContactSolver::b2ContactSolver(b2ContactSolverDef*)
+               |          
+               |--1.18%-- 0x83f800000
+                --98.82%-- [...]
+
+     1.13%  cs296_12_exe  cs296_12_exe       [.] b2ContactSolver::InitializeVelocityConstraints()                                                                           
+            |
+            --- b2ContactSolver::InitializeVelocityConstraints()
+                0x83f800000
+
+     1.09%  cs296_12_exe  cs296_12_exe       [.] b2Vec2::b2Vec2(float, float)                                                                                               
+            |
+            --- b2Vec2::b2Vec2(float, float)
+               |          
+               |--37.28%-- debug_draw_t::DrawSolidCircle(b2Vec2 const&, float, b2Vec2 const&, b2Color const&)
+               |          _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+               |          0x0
+               |          
+               |--26.73%-- operator*(float, b2Vec2 const&)
+               |          debug_draw_t::DrawSolidCircle(b2Vec2 const&, float, b2Vec2 const&, b2Color const&)
+               |          _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+               |          0x0
+               |          
+               |--25.39%-- operator+(b2Vec2 const&, b2Vec2 const&)
+               |          debug_draw_t::DrawSolidCircle(b2Vec2 const&, float, b2Vec2 const&, b2Color const&)
+               |          _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+               |          0x0
+               |          
+                --10.60%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+                          0x0
+
+     0.95%  cs296_12_exe  cs296_12_exe       [.] debug_draw_t::DrawSegment(b2Vec2 const&, b2Vec2 const&, b2Color const&)                                                    
+            |
+            --- debug_draw_t::DrawSegment(b2Vec2 const&, b2Vec2 const&, b2Color const&)
+               |          
+               |--77.18%-- b2World::DrawJoint(b2Joint*)
+               |          |          
+               |          |--84.30%-- 0x1
+               |          |          b2RevoluteJoint::GetAnchorB() const
+               |          |          0xf3c1280f00000080
+               |          |          
+               |          |--5.94%-- 0x5000000008
+               |          |          b2WeldJoint::GetAnchorB() const
+               |          |          0xf3c1280f0000008c
+               |          |          
+               |          |--1.98%-- 0x418f1eb800000001
+               |          |          b2RevoluteJoint::GetAnchorB() const
+               |          |          0xf3c1280f00000080
+               |          |          
+               |          |--1.98%-- 0x8
+               |          |          b2WeldJoint::GetAnchorB() const
+               |          |          0xf3c1280f0000008c
+               |          |          
+               |          |--1.98%-- 0x4182000000000001
+               |          |          b2RevoluteJoint::GetAnchorB() const
+               |          |          0xf3c1280f00000080
+               |          |          
+               |          |--1.97%-- 0x100000008
+               |          |          b2WeldJoint::GetAnchorB() const
+               |          |          0xf3c1280f0000008c
+               |          |          
+               |           --1.85%-- 0x41971eb800000001
+               |                     b2RevoluteJoint::GetAnchorB() const
+               |                     0xf3c1280f00000080
+               |          
+               |--12.20%-- 0x1
+               |          b2RevoluteJoint::GetAnchorB() const
+               |          0xf3c1280f00000080
+               |          
+               |--6.04%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+               |          |          
+               |          |--74.72%-- 0x1d734f0
+               |          |          
+               |           --25.28%-- 0x1d732b0
+               |          
+               |--3.05%-- 0x2b9d00000001
+               |          b2RevoluteJoint::GetAnchorB() const
+               |          0xf3c1280f00000080
+               |          
+                --1.53%-- 0x4182000000000001
+                          b2RevoluteJoint::GetAnchorB() const
+                          0xf3c1280f00000080
+
+     0.82%  cs296_12_exe  libGL.so.1.2       [.] 0x000000000006c9c0                                                                                                         
+            |          
+            |--47.00%-- 0x2b9d56b8f9c0
+            |          |          
+            |          |--56.35%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          |          
+            |          |          |--93.30%-- 0x0
+            |          |          |          
+            |          |           --6.70%-- 0x1d73250
+            |          |          
+            |           --43.65%-- b2World::DrawJoint(b2Joint*)
+            |                     |          
+            |                     |--91.42%-- 0x1
+            |                     |          b2RevoluteJoint::GetAnchorB() const
+            |                     |          0xf3c1280f00000080
+            |                     |          
+            |                      --8.58%-- 0x418f1eb800000001
+            |                                b2RevoluteJoint::GetAnchorB() const
+            |                                0xf3c1280f00000080
+            |          
+            |--21.14%-- 0x2b9d56b8f470
+            |          |          
+            |          |--58.69%-- b2World::DrawJoint(b2Joint*)
+            |          |          0x1
+            |          |          b2RevoluteJoint::GetAnchorB() const
+            |          |          0xf3c1280f00000080
+            |          |          
+            |           --41.31%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |                     0x0
+            |          
+            |--8.86%-- 0x2b9d56b8ff20
+            |          _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          0x0
+            |          
+            |--7.10%-- 0x2b9d56b8f230
+            |          |          
+            |          |--74.99%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          |          |          
+            |          |          |--66.66%-- 0x0
+            |          |          |          
+            |          |           --33.34%-- 0x1d733d0
+            |          |          
+            |           --25.01%-- b2World::DrawJoint(b2Joint*)
+            |                     0x1
+            |                     b2RevoluteJoint::GetAnchorB() const
+            |                     0xf3c1280f00000080
+            |          
+            |--7.09%-- 0x2b9d56b8f390
+            |          _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          0x0
+            |          
+            |--3.55%-- 0x2b9d56b8f290
+            |          b2World::DrawJoint(b2Joint*)
+            |          0x1
+            |          b2RevoluteJoint::GetAnchorB() const
+            |          0xf3c1280f00000080
+            |          
+            |--3.48%-- 0x2b9d56b8ff30
+            |          _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+            |          0x0
+            |          
+             --1.78%-- 0x2b9d56b900d0
+                       _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+                       0x0
+
+     0.78%  cs296_12_exe  cs296_12_exe       [.] b2Contact::Update(b2ContactListener*)                                                                                      
+            |
+            --- b2Contact::Update(b2ContactListener*)
+               |          
+               |--85.12%-- 0x430530
+               |          b2ContactListener::~b2ContactListener()
+               |          0xf8458b48f87d8948
+               |          
+               |--9.31%-- 0x0
+               |          
+               |--1.86%-- 0x1d732b0
+               |          
+               |--1.86%-- 0x1d73730
+               |          
+                --1.85%-- 0x1d73430
+
+     0.73%  cs296_12_exe  cs296_12_exe       [.] b2CollidePolygonAndCircle(b2Manifold*, b2PolygonShape const*, b2Transform const&, b2CircleShape const*, b2Transform const&)
+            |
+            --- b2CollidePolygonAndCircle(b2Manifold*, b2PolygonShape const*, b2Transform const&, b2CircleShape const*, b2Transform const&)
+                0x430530
+                b2ContactListener::~b2ContactListener()
+                0xf8458b48f87d8948
+
+     0.73%  cs296_12_exe  cs296_12_exe       [.] b2World::DrawDebugData()                                                                                                   
+            |
+            --- b2World::DrawDebugData()
+               |          
+               |--51.99%-- 0x0
+               |          
+               |--27.98%-- 0x1
+               |          b2RevoluteJoint::GetAnchorB() const
+               |          0xf3c1280f00000080
+               |          
+               |--2.01%-- 0x1d73790
+               |          
+               |--2.00%-- 0x1d71870
+               |          
+               |--2.00%-- 0x1d73730
+               |          
+               |--1.99%-- 0x8
+               |          b2WeldJoint::GetAnchorB() const
+               |          0xf3c1280f0000008c
+                --12.03%-- [...]
+
+     0.67%  cs296_12_exe  cs296_12_exe       [.] b2CollidePolygons(b2Manifold*, b2PolygonShape const*, b2Transform const&, b2PolygonShape const*, b2Transform const&)       
+            |
+            --- b2CollidePolygons(b2Manifold*, b2PolygonShape const*, b2Transform const&, b2PolygonShape const*, b2Transform const&)
+               |          
+               |--93.47%-- 0x3c23d70a00000002
+               |          b2PolygonShape::~b2PolygonShape()
+               |          0xf8458b48f87d8948
+               |          
+                --6.53%-- 0x430530
+                          b2ContactListener::~b2ContactListener()
+                          0xf8458b48f87d8948
+
+     0.61%  cs296_12_exe  cs296_12_exe       [.] b2Fixture::Synchronize(b2BroadPhase*, b2Transform const&, b2Transform const&)                                              
+            |
+            --- b2Fixture::Synchronize(b2BroadPhase*, b2Transform const&, b2Transform const&)
+               |          
+               |--61.82%-- 0x0
+               |          
+               |--21.47%-- 0x1d95ef0
+               |          
+               |--7.15%-- 0x1d732b0
+               |          
+               |--2.39%-- 0x1d71810
+               |          
+               |--2.39%-- 0x1d731f0
+               |          
+               |--2.39%-- 0x1d736d0
+               |          
+                --2.39%-- 0x1d73310
+
+     0.61%  cs296_12_exe  cs296_12_exe       [.] b2Distance(b2DistanceOutput*, b2SimplexCache*, b2DistanceInput const*)                                                     
+            |
+            --- b2Distance(b2DistanceOutput*, b2SimplexCache*, b2DistanceInput const*)
+               |          
+               |--57.09%-- 0x2033f
+               |          
+               |--21.44%-- b2Island::Solve(b2Profile*, b2TimeStep const&, b2Vec2 const&, bool)
+               |          |          
+               |          |--11.15%-- 0x2f00000001
+               |          |          
+               |          |--11.15%-- 0xbf7c0cf7
+               |          |          
+               |          |--11.15%-- 0xbf7c57fd
+               |          |          
+               |          |--11.15%-- 0xbf7f972f
+               |          |          
+               |          |--11.15%-- 0x3e1c0cd141b2e2ac
+               |          |          
+               |          |--11.13%-- 0xbf7c89ec
+               |          |          
+               |          |--11.08%-- 0xbf7f401b
+               |          |          
+               |          |--11.03%-- 0xbf7c8789
+               |          |          
+               |           --11.01%-- 0xbf7c39fb
+               |          
+               |--19.08%-- 0x3f
+               |          
+                --2.39%-- 0x83f800000
+
+     0.60%  cs296_12_exe  cs296_12_exe       [.] void b2DynamicTree::Query<b2BroadPhase>(b2BroadPhase*, b2AABB const&) const                                                
+            |
+            --- void b2DynamicTree::Query<b2BroadPhase>(b2BroadPhase*, b2AABB const&) const
+               |          
+               |--2.44%-- 0x40762755c1b7c98e
+               |          
+               |--2.44%-- 0x401fdd6dc1ad52ed
+               |          
+               |--2.44%-- 0xc60fe2754188cccd
+               |          
+               |--2.44%-- 0x3fd2bd2fc1aea763
+               |          
+               |--2.44%-- 0x3fbdd34cc1ae4f7b
+               |          
+               |--2.44%-- 0x4063a9d8c1a11c51
+               |          
+               |--2.44%-- 0x40394556c1b5929b
+               |          
+               |--2.44%-- 0x41a2acd14120b388
+               |          
+               |--2.44%-- 0x41163a56c183a61c
+               |          
+               |--2.44%-- 0x41ab5a9940b7e399
+               |          
+               |--2.44%-- 0x41bcbf1540d54429
+               |          
+               |--2.44%-- 0x3fb74113c1aab940
+               |          
+               |--2.44%-- 0x419fa35b40978afd
+               |          
+               |--2.44%-- 0x41970b734097a9d5
+               |          
+               |--2.44%-- 0x3fb84379c1ab52f7
+               |          
+               |--2.44%-- 0x3fbd0423c1aa79ad
+               |          
+               |--2.44%-- 0x3ff0d17dc1a7d074
+               |          
+               |--2.44%-- 0xc0ec5fc14188cccd
+               |          
+               |--2.43%-- 0x408d6cf7c1ab3b10
+               |          
+               |--2.43%-- 0x415ff105411bd079
+               |          
+               |--2.43%-- 0x41ac13a8410cb771
+               |          
+               |--2.43%-- 0x40da4725c0a4054d
+               |          
+               |--2.43%-- 0x404370abc1a0728f
+               |          
+               |--2.43%-- 0x41204094c09e9145
+               |          
+               |--2.43%-- 0x419c5da040932edd
+               |          
+               |--2.43%-- 0x405852e5c19cea32
+               |          
+               |--2.43%-- 0x419f8bfd40a14414
+               |          
+               |--2.43%-- 0x40b3fa20c1c83db1
+               |          
+               |--2.43%-- 0x41051438c100481e
+               |          
+               |--2.42%-- 0x416b0e41412b533c
+               |          
+               |--2.42%-- 0x419ce48540903a80
+               |          
+               |--2.42%-- 0xc64be2754188cccd
+               |          
+               |--2.41%-- 0x41a55739410f1aea
+               |          
+               |--2.39%-- 0x4113cfbcc10976e6
+               |          
+               |--2.37%-- 0x4149a281c1a7eb80
+               |          
+               |--2.35%-- 0x416583a6c1b39cf2
+               |          
+               |--2.30%-- 0x415eff014124ed11
+               |          
+               |--2.27%-- 0x411a0e25c109d916
+               |          
+               |--2.27%-- 0x4152b163c1a7eb83
+               |          
+               |--2.27%-- 0x4195caf2c19dbd00
+               |          
+               |--2.26%-- 0x41561201c1d31eb8
+               |          
+                --1.25%-- 0x418551e1c1a7eb84
+
+     0.57%  cs296_12_exe  cs296_12_exe       [.] b2RevoluteJoint::GetAnchorA() const                                                                                        
+            |
+            --- b2RevoluteJoint::GetAnchorA() const
+               |          
+               |--92.39%-- 0x1
+               |          b2RevoluteJoint::GetAnchorB() const
+               |          0xf3c1280f00000080
+               |          
+               |--2.54%-- 0x417e3d7000000001
+               |          b2RevoluteJoint::GetAnchorB() const
+               |          0xf3c1280f00000080
+               |          
+               |--2.54%-- 0x41891eb800000001
+               |          b2RevoluteJoint::GetAnchorB() const
+               |          0xf3c1280f00000080
+               |          
+                --2.53%-- 0x41971eb800000001
+                          b2RevoluteJoint::GetAnchorB() const
+                          0xf3c1280f00000080
+
+     0.54%  cs296_12_exe  cs296_12_exe       [.] b2WeldJoint::SolveVelocityConstraints(b2SolverData const&)                                                                 
+            |
+            --- b2WeldJoint::SolveVelocityConstraints(b2SolverData const&)
+
+     0.51%  cs296_12_exe  cs296_12_exe       [.] b2World::DrawJoint(b2Joint*)                                                                                               
+            |
+            --- b2World::DrawJoint(b2Joint*)
+               |          
+               |--77.14%-- 0x1
+               |          b2RevoluteJoint::GetAnchorB() const
+               |          0xf3c1280f00000080
+               |          
+               |--11.44%-- 0x41971eb800000001
+               |          b2RevoluteJoint::GetAnchorB() const
+               |          0xf3c1280f00000080
+               |          
+               |--2.86%-- 0x2b9d00000001
+               |          b2RevoluteJoint::GetAnchorB() const
+               |          0xf3c1280f00000080
+               |          
+               |--2.86%-- 0x5000000008
+               |          b2WeldJoint::GetAnchorB() const
+               |          0xf3c1280f0000008c
+               |          
+               |--2.86%-- 0x418f1eb800000001
+               |          b2RevoluteJoint::GetAnchorB() const
+               |          0xf3c1280f00000080
+               |          
+                --2.83%-- 0x41891eb800000001
+                          b2RevoluteJoint::GetAnchorB() const
+                          0xf3c1280f00000080
+
+     0.46%  cs296_12_exe  cs296_12_exe       [.] b2WorldManifold::Initialize(b2Manifold const*, b2Transform const&, float, b2Transform const&, float)                       
+            |
+            --- b2WorldManifold::Initialize(b2Manifold const*, b2Transform const&, float, b2Transform const&, float)
+                0x83f800000
+
+     0.46%  cs296_12_exe  [vdso]             [.] 0x0000000000000b51                                                                                                         
+            |          
+            |--53.17%-- 0x7fffbc52770c
+            |          0x7fffbc527ca1
+            |          |          
+            |          |--46.78%-- b2Timer::GetMilliseconds() const
+            |          |          |          
+            |          |          |--25.46%-- 0x1d796f0
+            |          |          |          
+            |          |          |--25.43%-- 0x800000000d
+            |          |          |          0x1d6d320
+            |          |          |          
+            |          |          |--25.35%-- 0xc0ce52cc00000071
+            |          |          |          
+            |          |           --23.76%-- 0x1d7a4f0
+            |          |          
+            |          |--35.49%-- b2Timer::b2Timer()
+            |          |          |          
+            |          |          |--66.66%-- 0x800000000d
+            |          |          |          0x1d6d320
+            |          |          |          
+            |          |          |--16.67%-- 0x1
+            |          |          |          
+            |          |           --16.66%-- 0x1d79a70
+            |          |          
+            |           --17.73%-- b2Timer::Reset()
+            |          
+            |--9.41%-- 0x7fffbc527c74
+            |          |          
+            |          |--33.40%-- b2Timer::b2Timer()
+            |          |          0x1d7a4f0
+            |          |          
+            |          |--33.37%-- b2Timer::Reset()
+            |          |          
+            |           --33.24%-- b2Timer::GetMilliseconds() const
+            |                     0x800000000d
+            |                     0x1d6d320
+            |          
+            |--6.26%-- 0x7fffbc527b51
+            |          0x800000000d
+            |          0x1d6d320
+            |          
+            |--3.15%-- 0x7fffbc527c9c
+            |          b2Timer::GetMilliseconds() const
+            |          0x800000000d
+            |          0x1d6d320
+            |          
+            |--3.14%-- 0x7fffbc527b56
+            |          b2Timer::b2Timer()
+            |          0x800000000d
+            |          0x1d6d320
+            |          
+            |--3.14%-- 0x7fffbc527c28
+            |          b2Timer::GetMilliseconds() const
+            |          
+            |--3.14%-- 0x7fffbc527b50
+            |          0x800000000d
+            |          0x1d6d320
+            |          
+            |--3.14%-- 0x7fffbc527b79
+            |          b2Timer::b2Timer()
+            |          0x1
+            |          
+            |--3.14%-- 0x7fffbc527c98
+            |          b2Timer::GetMilliseconds() const
+            |          0x800000000d
+            |          0x1d6d320
+            |          
+            |--3.14%-- 0x7fffbc527c21
+            |          b2Timer::GetMilliseconds() const
+            |          0x800000000d
+            |          0x1d6d320
+            |          
+            |--3.14%-- 0x7fffbc527c25
+            |          b2Timer::b2Timer()
+            |          0x1
+            |          
+            |--3.09%-- 0x7fffbc527701
+            |          b2Timer::Reset()
+            |          
+             --2.93%-- 0x7fffbc527b8a
+                       b2Timer::Reset()
+                       0x1
+
+     0.45%  cs296_12_exe  libm-2.15.so       [.] cosf                                                                                                                       
+            |
+            --- cosf
+                _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+                (nil)
+
+     0.42%  cs296_12_exe  cs296_12_exe       [.] b2DynamicTree::MoveProxy(int, b2AABB const&, b2Vec2 const&)                                                                
+            |
+            --- b2DynamicTree::MoveProxy(int, b2AABB const&, b2Vec2 const&)
+
+     0.39%  cs296_12_exe  libm-2.15.so       [.] sinf                                                                                                                       
+            |
+            --- sinf
+                _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+                (nil)
+
+     0.35%  cs296_12_exe  cs296_12_exe       [.] b2CollideEdgeAndPolygon(b2Manifold*, b2EdgeShape const*, b2Transform const&, b2PolygonShape const*, b2Transform const&)    
+            |
+            --- b2CollideEdgeAndPolygon(b2Manifold*, b2EdgeShape const*, b2Transform const&, b2PolygonShape const*, b2Transform const&)
+               |          
+               |--41.64%-- 0x0
+               |          
+               |--4.18%-- 0x2d48b8002da0dc00
+               |          
+               |--4.18%-- 0x36c070a436c7d6e6
+               |          
+               |--4.18%-- 0xba3e32b23d0e5cdc
+               |          
+               |--4.18%-- 0xb9ebaf4a3d0edaef
+               |          
+               |--4.18%-- 0xba3382e23d0e54c8
+               |          
+               |--4.17%-- 0x36cac37636cbf6a4
+               |          
+               |--4.17%-- 0xba07b0663d0ebe75
+               |          
+               |--4.17%-- 0x2d23f4002da64e00
+               |          
+               |--4.17%-- 0x36c3b0af36c53d97
+               |          
+               |--4.17%-- 0x36cc0c2a36cd1079
+               |          
+               |--4.17%-- 0x36cdbf0036ce216a
+               |          
+               |--4.16%-- 0x36c605ce36c633fe
+               |          
+               |--4.16%-- 0xaa9000002bd80000
+               |          
+                --4.13%-- 0xb9e83bbd3d0ea9f0
+
+     0.35%  cs296_12_exe  cs296_12_exe       [.] b2WeldJoint::SolvePositionConstraints(b2SolverData const&)                                                                 
+            |
+            --- b2WeldJoint::SolvePositionConstraints(b2SolverData const&)
+                0x83f800000
+
+     0.35%  cs296_12_exe  cs296_12_exe       [.] b2Body::SynchronizeFixtures()                                                                                              
+            |
+            --- b2Body::SynchronizeFixtures()
+               |          
+               |--79.10%-- 0x1d95ef0
+               |          
+                --20.90%-- 0x800000000d
+                          0x1d6d320
+
+     0.32%  cs296_12_exe  cs296_12_exe       [.] b2TimeOfImpact(b2TOIOutput*, b2TOIInput const*)                                                                            
+            |
+            --- b2TimeOfImpact(b2TOIOutput*, b2TOIInput const*)
+               |          
+               |--31.82%-- 0x83f800000
+               |          
+               |--9.10%-- 0x1d7a4f0
+               |          
+               |--9.09%-- 0x1d79590
+               |          
+               |--4.55%-- 0x1d79d70
+               |          
+               |--4.55%-- 0x1d79730
+               |          
+               |--4.55%-- 0x1d79c30
+               |          
+               |--4.55%-- 0x1d79c50
+               |          
+               |--4.55%-- 0x1d79d30
+               |          
+               |--4.55%-- 0x1d79a90
+               |          
+               |--4.55%-- 0x1d79810
+               |          
+               |--4.54%-- 0x1d79d10
+               |          
+               |--4.54%-- 0x1d79650
+               |          
+               |--4.53%-- 0x1d79870
+               |          
+                --4.53%-- 0x1d79690
+
+     0.23%  cs296_12_exe  cs296_12_exe       [.] b2DynamicTree::InsertLeaf(int)                                                                                             
+            |
+            --- b2DynamicTree::InsertLeaf(int)
+
+     0.22%  cs296_12_exe  cs296_12_exe       [.] b2WeldJoint::InitVelocityConstraints(b2SolverData const&)                                                                  
+            |
+            --- b2WeldJoint::InitVelocityConstraints(b2SolverData const&)
+               |          
+               |--87.03%-- 0x83f800000
+                --12.97%-- [...]
+
+     0.20%  cs296_12_exe  cs296_12_exe       [.] sincosf@plt                                                                                                                
+            |
+            --- sincosf@plt
+               |          
+               |--43.00%-- 0x83f800000
+               |          
+               |--7.18%-- 0x410379b900000030
+               |          
+               |--7.18%-- 0xc1b37c090000006e
+               |          
+               |--7.18%-- 0x40dbca020000002a
+               |          
+               |--7.18%-- 0xc0a6d02900000007
+                --28.28%-- [...]
+
+     0.17%  cs296_12_exe  cs296_12_exe       [.] b2ContactSolver::WarmStart()                                                                                               
+            |
+            --- b2ContactSolver::WarmStart()
+
+     0.17%  cs296_12_exe  cs296_12_exe       [.] b2CollideEdgeAndCircle(b2Manifold*, b2EdgeShape const*, b2Transform const&, b2CircleShape const*, b2Transform const&)      
+            |
+            --- b2CollideEdgeAndCircle(b2Manifold*, b2EdgeShape const*, b2Transform const&, b2CircleShape const*, b2Transform const&)
+                0x430530
+                b2ContactListener::~b2ContactListener()
+                0xf8458b48f87d8948
+
+     0.17%  cs296_12_exe  cs296_12_exe       [.] b2RevoluteJoint::GetAnchorB() const                                                                                        
+            |
+            --- b2RevoluteJoint::GetAnchorB() const
+               |          
+               |--83.20%-- 0x1
+               |          b2RevoluteJoint::GetAnchorB() const
+               |          0xf3c1280f00000080
+               |          
+               |--8.40%-- 0x41971eb800000001
+               |          b2RevoluteJoint::GetAnchorB() const
+               |          0xf3c1280f00000080
+               |          
+                --8.40%-- 0x2b9d00000001
+                          b2RevoluteJoint::GetAnchorB() const
+                          0xf3c1280f00000080
+
+     0.17%  cs296_12_exe  [kernel.kallsyms]  [k] 0xffffffff81044ffa                                                                                                         
+            |          
+            |--8.84%-- 0xffffffff81044ffa
+            |          |          
+            |          |--99.94%-- 0xffffffff810393a3
+            |          |          0xffffffff810b4f04
+            |          |          0xffffffff810b65f4
+            |          |          0xffffffff810842b9
+            |          |          0xffffffff816ffd59
+            |          |          0xffffffff816fec9d
+            |          |          b2RevoluteJoint::InitVelocityConstraints(b2SolverData const&)
+            |          |          0x83f800000
+            |           --0.06%-- [...]
+            |          
+            |--8.83%-- 0xffffffff8112af05
+            |          0xffffffff8112b1b0
+            |          0xffffffff81090c93
+            |          0xffffffff8106bffe
+            |          0xffffffff810b6c53
+            |          0xffffffff810b6d7c
+            |          0xffffffff810839e8
+            |          0xffffffff81084277
+            |          0xffffffff816ffd59
+            |          0xffffffff816fec9d
+            |          b2ContactSolver::SolveVelocityConstraints()
+            |          0x398d54e138f80adc
+            |          
+            |--8.83%-- 0xffffffff816f50f0
+            |          0xffffffff81084277
+            |          0xffffffff816ffd59
+            |          0xffffffff816fec9d
+            |          0x2b9d56b8f9c0
+            |          b2World::DrawJoint(b2Joint*)
+            |          0x1
+            |          b2RevoluteJoint::GetAnchorB() const
+            |          0xf3c1280f00000080
+            |          
+            |--8.83%-- 0xffffffff810af883
+            |          0xffffffff810afa80
+            |          0xffffffff810b000d
+            |          0xffffffff810b6895
+            |          0xffffffff810b6925
+            |          0xffffffff810b6d65
+            |          0xffffffff810839e8
+            |          0xffffffff81084277
+            |          0xffffffff816ffd59
+            |          0xffffffff816fec9d
+            |          0x2b9d57030122
+            |          0x72
+            |          
+            |--8.83%-- 0xffffffff816f39d3
+            |          0xffffffff816f41c9
+            |          0xffffffff816f5796
+            |          b2World::SolveTOI(b2TimeStep const&)
+            |          
+            |--8.83%-- 0xffffffff8115db46
+            |          0xffffffff8115e036
+            |          0xffffffff8115e217
+            |          0xffffffff8115ead4
+            |          0xffffffff81166e3c
+            |          0xffffffff8105780a
+            |          0xffffffff81057909
+            |          0xffffffff8105fcba
+            |          0xffffffff8105fe43
+            |          0xffffffff810601f4
+            |          0xffffffff81060267
+            |          0xffffffff816fdf5d
+            |          
+            |--8.83%-- 0xffffffff810b4f01
+            |          0xffffffff810b65f4
+            |          0xffffffff810842b9
+            |          0xffffffff816ffd59
+            |          0xffffffff816fec9d
+            |          0x2b9d570300f4
+            |          0xc4f9250345304406
+            |          
+            |--7.27%-- 0xffffffff81203e7e
+            |          0xffffffff81204b19
+            |          0xffffffff81205d13
+            |          0xffffffff8120106f
+            |          0xffffffff811a59bd
+            |          0xffffffff811a5e28
+            |          0xffffffff816e2e2e
+            |          0xffffffff811a8f36
+            |          0xffffffff811aa926
+            |          0xffffffff811ab762
+            |          0xffffffff8119b2ba
+            |          0xffffffff8119b431
+            |          0xffffffff816fdf5d
+            |          open64
+            |          0x2b9d57583266
+            |          0x657275747865745f
+            |          
+            |--7.10%-- 0xffffffff816f59b0
+            |          0x2b9d561f2413
+            |          0x2b9d561ebb3b
+            |          0x2b9d561fdb24
+            |          
+            |--5.29%-- 0xffffffff8135f8c9
+            |          0xffffffff81136059
+            |          0xffffffff81136fa1
+            |          0xffffffff8119b763
+            |          0xffffffff8119bea0
+            |          0xffffffff8119bfc2
+            |          0xffffffff816fdf5d
+            |          0x2b9d562002c7
+            |          0x2b9d561f092d
+            |          
+            |--5.09%-- 0xffffffff81159b97
+            |          0xffffffff81164547
+            |          0xffffffff81164d36
+            |          0xffffffff81165bd9
+            |          0xffffffff8116805d
+            |          0xffffffff81168251
+            |          0xffffffff816fdf5d
+            |          0x2b9d56200497
+            |          0x2b9d561f069a
+            |          
+            |--4.96%-- 0xffffffff811a61fd
+            |          0xffffffff811a7f93
+            |          0xffffffff811a8d92
+            |          0xffffffff811a9e28
+            |          0xffffffff811aa5a4
+            |          0xffffffff811ab6b9
+            |          0xffffffff811ab711
+            |          0xffffffff8119a7fc
+            |          0xffffffff8119a998
+            |          0xffffffff816fdf5d
+            |          0x2b9d56200327
+            |          0x58400302e37
+            |          
+            |--4.71%-- 0xffffffff816f3f0f
+            |          0xffffffff816f960e
+            |          0xffffffff816f59d8
+            |          0x2b9d562008e2
+            |          
+            |--3.19%-- 0xffffffff81163600
+            |          0xffffffff811642f0
+            |          0xffffffff81166899
+            |          0xffffffff81166c80
+            |          0xffffffff81151be6
+            |          0xffffffff81151c3d
+            |          0xffffffff816e3665
+            |          0xffffffff816e38e5
+            |          0xffffffff811f12e7
+            |          0xffffffff811a1195
+            |          0xffffffff811a3458
+            |          0xffffffff811a34f8
+            |          0xffffffff811a377d
+            |          0xffffffff816fe4c9
+            |          execve
+            |          
+            |--0.51%-- 0xffffffff811a665e
+            |          0xffffffff811a36d0
+            |          0xffffffff811f0c52
+            |          0xffffffff811a1195
+            |          0xffffffff811a3458
+            |          0xffffffff811a34f8
+            |          0xffffffff811a377d
+            |          0xffffffff816fe4c9
+            |          execve
+             --0.05%-- [...]
+
+     0.13%  cs296_12_exe  cs296_12_exe       [.] b2ClipSegmentToLine(b2ClipVertex*, b2ClipVertex const*, b2Vec2 const&, float, int)                                         
+            |
+            --- b2ClipSegmentToLine(b2ClipVertex*, b2ClipVertex const*, b2Vec2 const&, float, int)
+               |          
+               |--77.78%-- 0x3c23d70a00000002
+               |          b2PolygonShape::~b2PolygonShape()
+               |          0xf8458b48f87d8948
+               |          
+               |--11.11%-- 0xba0f6f713d0db22e
+               |          
+                --11.11%-- 0x36c07c5e36c55d8d
+
+     0.13%  cs296_12_exe  cs296_12_exe       [.] b2EdgeShape::ComputeAABB(b2AABB*, b2Transform const&, int) const                                                           
+            |
+            --- b2EdgeShape::ComputeAABB(b2AABB*, b2Transform const&, int) const
+               |          
+               |--33.30%-- 0x1d73490
+               |          
+               |--22.23%-- 0x1d734f0
+               |          
+               |--11.13%-- 0x1d73430
+               |          
+               |--11.12%-- 0x0
+               |          
+               |--11.12%-- 0x1d73250
+               |          
+                --11.09%-- 0x1d732b0
+
+     0.13%  cs296_12_exe  cs296_12_exe       [.] b2BroadPhase::MoveProxy(int, b2AABB const&, b2Vec2 const&)                                                                 
+            |
+            --- b2BroadPhase::MoveProxy(int, b2AABB const&, b2Vec2 const&)
+               |          
+               |--55.82%-- 0x0
+                --44.18%-- [...]
+
+     0.12%  cs296_12_exe  cs296_12_exe       [.] b2StackAllocator::Allocate(int)                                                                                            
+            |
+            --- b2StackAllocator::Allocate(int)
+               |          
+               |--24.99%-- 0x0
+               |          |          
+               |          |--50.00%-- 0x0
+               |          |          
+               |           --50.00%-- 0xbd1e98003fbf9f58
+               |          
+               |--12.51%-- 0x100
+               |          0x1d6e820
+               |          0x410074e400000040
+               |          
+               |--12.51%-- 0x540
+               |          0x1d6e460
+               |          0x40bae52500000040
+               |          
+               |--12.50%-- 0x3b0
+               |          0x1d8f490
+               |          0xc0b58eca00000000
+               |          
+               |--12.50%-- 0x800000000d
+               |          0x1d6d320
+                --24.99%-- [...]
+
+     0.10%  cs296_12_exe  cs296_12_exe       [.] b2Mat33::Solve33(b2Vec3 const&) const                                                                                      
+            |
+            --- b2Mat33::Solve33(b2Vec3 const&) const
+                0x83f800000
+
+     0.10%  cs296_12_exe  cs296_12_exe       [.] b2PolygonAndCircleContact::Evaluate(b2Manifold*, b2Transform const&, b2Transform const&)                                   
+            |
+            --- b2PolygonAndCircleContact::Evaluate(b2Manifold*, b2Transform const&, b2Transform const&)
+                0x430530
+                b2ContactListener::~b2ContactListener()
+                0xf8458b48f87d8948
+
+     0.10%  cs296_12_exe  cs296_12_exe       [.] b2Timer::GetMilliseconds() const                                                                                           
+            |
+            --- b2Timer::GetMilliseconds() const
+               |          
+               |--42.86%-- 0x800000000d
+               |          0x1d6d320
+                --57.14%-- [...]
+
+     0.09%  cs296_12_exe  cs296_12_exe       [.] void b2BroadPhase::UpdatePairs<b2ContactManager>(b2ContactManager*)                                                        
+            |
+            --- void b2BroadPhase::UpdatePairs<b2ContactManager>(b2ContactManager*)
+                0x1d95ef0
+
+     0.09%  cs296_12_exe  cs296_12_exe       [.] glEnd@plt                                                                                                                  
+            |
+            --- glEnd@plt
+               |          
+               |--50.05%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+               |          0x0
+               |          
+                --49.95%-- b2World::DrawJoint(b2Joint*)
+                          0x1
+                          b2RevoluteJoint::GetAnchorB() const
+                          0xf3c1280f00000080
+
+     0.09%  cs296_12_exe  cs296_12_exe       [.] b2DynamicTree::Balance(int)                                                                                                
+            |
+            --- b2DynamicTree::Balance(int)
+
+     0.09%  cs296_12_exe  cs296_12_exe       [.] cs296::base_sim_t::step(cs296::settings_t*)                                                                                
+            |
+            --- cs296::base_sim_t::step(cs296::settings_t*)
+               |          
+               |--83.30%-- main
+               |          __libc_start_main
+               |          
+                --16.70%-- __libc_start_main
+
+     0.09%  cs296_12_exe  cs296_12_exe       [.] sinf@plt                                                                                                                   
+            |
+            --- sinf@plt
+                _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+                (nil)
+
+     0.09%  cs296_12_exe  cs296_12_exe       [.] b2PolygonContact::Evaluate(b2Manifold*, b2Transform const&, b2Transform const&)                                            
+            |
+            --- b2PolygonContact::Evaluate(b2Manifold*, b2Transform const&, b2Transform const&)
+                0x430530
+                b2ContactListener::~b2ContactListener()
+                0xf8458b48f87d8948
+
+     0.07%  cs296_12_exe  cs296_12_exe       [.] _ZSt16__insertion_sortIP6b2PairPFbRKS0_S3_EEvT_S6_T0_.constprop.21                                                         
+            |
+            --- _ZSt16__insertion_sortIP6b2PairPFbRKS0_S3_EEvT_S6_T0_.constprop.21
+               |          
+               |--20.02%-- 0xb500000099
+               |          
+               |--20.02%-- 0x1d95ef0
+               |          
+               |--20.00%-- 0x210000001f
+               |          
+               |--20.00%-- 0x8f0000008b
+               |          
+                --19.97%-- 0xdd0000000d
+
+     0.07%  cs296_12_exe  cs296_12_exe       [.] b2DynamicTree::RemoveLeaf(int)                                                                                             
+            |
+            --- b2DynamicTree::RemoveLeaf(int)
+
+     0.07%  cs296_12_exe  cs296_12_exe       [.] _ZSt16__introsort_loopIP6b2PairlPFbRKS0_S3_EEvT_S6_T0_T1_.constprop.22                                                     
+            |
+            --- _ZSt16__introsort_loopIP6b2PairlPFbRKS0_S3_EEvT_S6_T0_T1_.constprop.22
+               |          
+               |--20.03%-- 0xd10000000f
+               |          
+               |--20.02%-- 0x9900000091
+               |          
+               |--20.02%-- 0xb500000011
+               |          
+               |--20.02%-- 0xd50000000d
+               |          
+                --19.91%-- 0xfb0000000d
+
+     0.07%  cs296_12_exe  cs296_12_exe       [.] b2Timer::Reset()                                                                                                           
+            |
+            --- b2Timer::Reset()
+               |          
+               |--20.03%-- 0x1
+                --79.97%-- [...]
+
+     0.07%  cs296_12_exe  cs296_12_exe       [.] b2ContactManager::AddPair(void*, void*)                                                                                    
+            |
+            --- b2ContactManager::AddPair(void*, void*)
+               |          
+               |--40.00%-- 0x1d71630
+               |          
+               |--39.97%-- 0x1d71690
+               |          
+                --20.03%-- 0x0
+
+     0.06%  cs296_12_exe  ld-2.15.so         [.] 0x000000000000994f                                                                                                         
+            |          
+            |--31.02%-- 0x2b9d561f194f
+            |          
+            |--18.14%-- 0x2b9d561f244c
+            |          0x2b9d561f6774
+            |          0x0
+            |          
+            |--17.95%-- 0x2b9d561f23c0
+            |          
+            |--17.30%-- 0x2b9d561f221c
+            |          
+             --15.59%-- 0x2b9d561f2416
+                       0x2b9d561f3fc5
+                       0x2b9d561ebb3b
+                       0x2b9d561fdb24
+
+     0.06%  cs296_12_exe  cs296_12_exe       [.] b2Mat33::GetSymInverse33(b2Mat33*) const                                                                                   
+            |
+            --- b2Mat33::GetSymInverse33(b2Mat33*) const
+                0x83f800000
+
+     0.06%  cs296_12_exe  cs296_12_exe       [.] glBegin@plt                                                                                                                
+            |
+            --- glBegin@plt
+               |          
+               |--50.08%-- b2World::DrawJoint(b2Joint*)
+               |          0x1
+               |          b2RevoluteJoint::GetAnchorB() const
+               |          0xf3c1280f00000080
+               |          
+                --49.92%-- _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+                          0x0
+
+     0.06%  cs296_12_exe  cs296_12_exe       [.] b2ContactSolver::StoreImpulses()                                                                                           
+            |
+            --- b2ContactSolver::StoreImpulses()
+
+     0.05%  cs296_12_exe  cs296_12_exe       [.] b2StackAllocator::Free(void*)                                                                                              
+            |
+            --- b2StackAllocator::Free(void*)
+               |          
+               |--54.20%-- 0x300
+               |          |          
+               |          |--50.03%-- 0x4167948c00000000
+               |          |          
+               |           --49.97%-- 0x1d6f1e0
+               |                     0xc1de153400000060
+               |          
+               |--27.10%-- 0x800000000d
+               |          0x1d6d320
+               |          
+                --18.70%-- 0x0
+
+     0.04%  cs296_12_exe  cs296_12_exe       [.] glDisable@plt                                                                                                              
+            |
+            --- glDisable@plt
+                _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+                (nil)
+
+     0.04%  cs296_12_exe  cs296_12_exe       [.] cosf@plt                                                                                                                   
+            |
+            --- cosf@plt
+                _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+                (nil)
+
+     0.04%  cs296_12_exe  cs296_12_exe       [.] b2CircleShape::ComputeAABB(b2AABB*, b2Transform const&, int) const                                                         
+            |
+            --- b2CircleShape::ComputeAABB(b2AABB*, b2Transform const&, int) const
+                (nil)
+
+     0.03%  cs296_12_exe  cs296_12_exe       [.] b2EdgeAndPolygonContact::Evaluate(b2Manifold*, b2Transform const&, b2Transform const&)                                     
+            |
+            --- b2EdgeAndPolygonContact::Evaluate(b2Manifold*, b2Transform const&, b2Transform const&)
+                0x430530
+                b2ContactListener::~b2ContactListener()
+                0xf8458b48f87d8948
+
+     0.03%  cs296_12_exe  cs296_12_exe       [.] glColor3f@plt                                                                                                              
+            |
+            --- glColor3f@plt
+                b2World::DrawJoint(b2Joint*)
+                0x1
+                b2RevoluteJoint::GetAnchorB() const
+                0xf3c1280f00000080
+
+     0.03%  cs296_12_exe  cs296_12_exe       [.] b2Island::b2Island(int, int, int, b2StackAllocator*, b2ContactListener*)                                                   
+            |
+            --- b2Island::b2Island(int, int, int, b2StackAllocator*, b2ContactListener*)
+
+     0.03%  cs296_12_exe  cs296_12_exe       [.] b2DistanceProxy::Set(b2Shape const*, int)                                                                                  
+            |
+            --- b2DistanceProxy::Set(b2Shape const*, int)
+               |          
+               |--50.01%-- 0xc04f35a00000005c
+               |          
+                --49.99%-- 0xc04f48840000005b
+
+     0.03%  cs296_12_exe  cs296_12_exe       [.] b2ContactListener::PostSolve(b2Contact*, b2ContactImpulse const*)                                                          
+            |
+            --- b2ContactListener::PostSolve(b2Contact*, b2ContactImpulse const*)
+               |          
+               |--50.02%-- 0x3e6140c03fd0fdf0
+               |          
+                --49.98%-- 0x3bf5be00c1dab380
+
+     0.03%  cs296_12_exe  cs296_12_exe       [.] b2EdgeAndCircleContact::Evaluate(b2Manifold*, b2Transform const&, b2Transform const&)                                      
+            |
+            --- b2EdgeAndCircleContact::Evaluate(b2Manifold*, b2Transform const&, b2Transform const&)
+                0x430530
+                b2ContactListener::~b2ContactListener()
+                0xf8458b48f87d8948
+
+     0.03%  cs296_12_exe  cs296_12_exe       [.] glVertex2f@plt                                                                                                             
+            |
+            --- glVertex2f@plt
+                _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+                (nil)
+
+     0.03%  cs296_12_exe  cs296_12_exe       [.] b2BroadPhase::QueryCallback(int)                                                                                           
+            |
+            --- b2BroadPhase::QueryCallback(int)
+               |          
+               |--50.05%-- 0x4076ffbac19d5ed1
+                --49.95%-- [...]
+
+     0.03%  cs296_12_exe  cs296_12_exe       [.] b2ContactListener::PreSolve(b2Contact*, b2Manifold const*)                                                                 
+            |
+            --- b2ContactListener::PreSolve(b2Contact*, b2Manifold const*)
+                b2Contact::Update(b2ContactListener*)
+                0x430530
+                b2ContactListener::~b2ContactListener()
+                0xf8458b48f87d8948
+
+     0.01%  cs296_12_exe  cs296_12_exe       [.] b2World::GetProfile() const                                                                                                
+            |
+            --- b2World::GetProfile() const
+                main
+                __libc_start_main
+
+     0.01%  cs296_12_exe  cs296_12_exe       [.] floorf@plt                                                                                                                 
+            |
+            --- floorf@plt
+                0x1d79cb0
+
+     0.01%  cs296_12_exe  cs296_12_exe       [.] b2WeldJoint::GetAnchorA() const                                                                                            
+            |
+            --- b2WeldJoint::GetAnchorA() const
+                0x8
+                b2WeldJoint::GetAnchorB() const
+                0xf3c1280f0000008c
+
+     0.01%  cs296_12_exe  cs296_12_exe       [.] b2WeldJoint::GetAnchorB() const                                                                                            
+            |
+            --- b2WeldJoint::GetAnchorB() const
+                0x5000000008
+                b2WeldJoint::GetAnchorB() const
+                0xf3c1280f0000008c
+
+     0.01%  cs296_12_exe  cs296_12_exe       [.] b2Body::ShouldCollide(b2Body const*) const                                                                                 
+            |
+            --- b2Body::ShouldCollide(b2Body const*) const
+                (nil)
+
+     0.01%  cs296_12_exe  cs296_12_exe       [.] b2DynamicTree::AllocateNode()                                                                                              
+            |
+            --- b2DynamicTree::AllocateNode()
+
+     0.01%  cs296_12_exe  cs296_12_exe       [.] b2Island::~b2Island()                                                                                                      
+            |
+            --- b2Island::~b2Island()
+                0x26
+
+     0.01%  cs296_12_exe  cs296_12_exe       [.] float b2Max<float>(float, float)                                                                                           
+            |
+            --- float b2Max<float>(float, float)
+                cs296::base_sim_t::step(cs296::settings_t*)
+                main
+                __libc_start_main
+
+     0.01%  cs296_12_exe  cs296_12_exe       [.] gettimeofday@plt                                                                                                           
+            |
+            --- gettimeofday@plt
+
+     0.01%  cs296_12_exe  cs296_12_exe       [.] main                                                                                                                       
+            |
+            --- main
+                __libc_start_main
+
+     0.01%  cs296_12_exe  cs296_12_exe       [.] glColor4f@plt                                                                                                              
+            |
+            --- glColor4f@plt
+                _ZN7b2World9DrawShapeEP9b2FixtureRK11b2TransformRK7b2Color.constprop.48
+                (nil)
+
+
+
+#
+# (For a higher level overview, try: perf report --sort comm,dso)
+#
