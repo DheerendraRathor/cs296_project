@@ -22,9 +22,9 @@ SHARED_LIB = TRUE
 PROJECT_ROOT := $(CURDIR)
 EXTERNAL = $(PROJECT_ROOT)/external
 SRCDIR = $(PROJECT_ROOT)/src
-OBJDIR = $(PROJECT_ROOT)/myobjs
-BINDIR = $(PROJECT_ROOT)/mybins
-LIBDIR = $(PROJECT_ROOT)/mylibs
+OBJDIR = $(PROJECT_ROOT)/obj
+BINDIR = $(PROJECT_ROOT)/bin
+LIBDIR = $(PROJECT_ROOT)/lib
 EXTSRC = $(EXTERNAL)/src
 EXTLIB = $(EXTERNAL)/lib
 INCLUDE = $(EXTERNAL)/include
@@ -59,9 +59,9 @@ helloworld: setup
 
 setup:
 	@$(ECHO) "setting up compilation now....please wait.."
-	@$(MK) -p $(PROJECT_ROOT)/myobjs
-	@$(MK) -p $(PROJECT_ROOT)/mylibs
-	@$(MK) -p $(PROJECT_ROOT)/mybins
+	@$(MK) -p $(OBJDIR)
+	@$(MK) -p $(LIBDIR)
+	@$(MK) -p $(BINDIR)
 	@if test -d $(BOX2D_FOLDER) -a -d $(EXTLIB)/Box2D -a -e $(EXTLIB)/libBox2D.a;\
 	then $(ECHO) "Box 2D found installed";\
 	else $(ECHO) "You haven't installed Box2D...Let me do it for you."\
@@ -132,7 +132,7 @@ exelib: setup $(OBJS) libs
 	@$(RM) -f temp.log temp.err
 
 clean: 
-	@$(ECHO) "Cleaning up mylibs, mybins, myobjs..."
+	@$(ECHO) "Cleaning up lib, bin, obj..."
 	@rm -rf $(PROJECT_ROOT)/my* *~ $(DOCDIR)/cs296_report_12.aux $(DOCDIR)/cs296_report_12.pdf $(DOCDIR)/cs296_report_12.dvi $(DOCDIR)/cs296_report_12.bbl $(DOCDIR)/cs296_report_12.blg $(DOCDIR)/cs296_report_12.log
 	@rm -rf $(PROJECT_ROOT)/data $(PROJECT_ROOT)/plots $(DOCDIR)/*.html
 	@$(ECHO) "Done"
@@ -156,5 +156,11 @@ report: setup exe
 	python3 g12_gen_plots.py; \
 	python3 g12_gen_html.py; \
 	cd ..
+	
+dist: distclean
+	@$(CD) ../
+	@tar czf cs296_g12_project.tar.gz cs296_base_code html
+	
+install: setup exe doc report
 
 
