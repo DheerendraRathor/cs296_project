@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head><title>HTML file of lab 09</title> </head>
+<body style="margin-left:50px;margin-right:50px;margin-bottom:50px">
+<h1>Timing</h1>
+Here we will study the behaviour of the graphs for the timing of the various parts of the code which were generated over 1200 iterations and 20 reruns.
+<h2>Loop Time</h2>
+Loop time is the time taken by the for loop in the main.cpp and it is calculated by gettimeofday() method in c++.
+<div align="center">
+<img src="../plots/../plots/g12_plot01.png" </img>
+</div>
+As we can see in this graph, the loop is almost linear with respect to iteration value specially on higher iteration values as expected from the system. This graph clearly shows that slop of average loop time vs iteration values is higher for the lower iteration values.
+Also step time can be seen very low and close to zero.
+<h2>Other timinings</h2>
+Step time is time taken by one step, Collision time is time taken for one collision, Velocity update time is time taken for updating velocity and Position update time is time taken for updating positions.
+<div align="center">
+<img src="../plots/../plots/g12_plot02.png" </img>
+</div>
+From the above graph, we infered following things.
+<ul>
+<li> Step time is higher than all other times as expected and it is also greater than the sum of collision time, velocity update time and position update time.
+<li> Other 3 times viz. collision time, velocity update time and position update time are very close to each other.
+<li> All times have decreased to their minimum till 200 and there is sudden variation in times at 200.There are sudden changes when dominos falls or any other objects interacts.
+</ul>
+<h2>Variation over Reruns</h2>
+<div align="center">
+<img src="../plots/../plots/g12_plot03.png" </img>
+</div>
+As we can see in errorbars graph, there are large variations for different reruns, that are majorly due to different processes running in system and memory available to the main process.<br>
+Also error decreased with the higher iteration values. except at few points where major interation in the b2world are taking place. And error is more or less proportional to step time.
+<h2>Frequency for fix iteration value</h2>
+<div align="center">
+<img src="../plots/../plots/g12_plot04.png" </img>
+</div>
+Here we chosed the fix iteration value as 33. From the graph we can infer that for low step time frequency is very high that is expected because for a fix iteration value over different reruns the step time should be almost the same. There are some variations in step time also, there are some high values of step times also for the same iteration value.
+<h2>Effect of system load</h2>
+when the system is heavily loaded, we can expect that system will slow down due to lack of available memory,  however CPU processes didn't affect the timing as much as memory affects. There is almost no change for small iteration values but for large iteration values the changes are significant.
+These differences can not be seen in the graphs due to change in few milliseconds in the loop time.
+</body>
+</html>
