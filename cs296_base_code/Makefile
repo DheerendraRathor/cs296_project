@@ -15,6 +15,8 @@ CAT = cat
 PRINTF = printf
 CC = g++
 DOXYGEN = doxygen
+INSTALL= ../install
+CP = cp
 
 
 # Variables
@@ -30,7 +32,7 @@ EXTLIB = $(EXTERNAL)/lib
 INCLUDE = $(EXTERNAL)/include
 BOX2D_FOLDER = $(INCLUDE)/Box2D
 DOCDIR = $(PROJECT_ROOT)/doc
-
+INSDIR= $(PROJECT_ROOT)/$(INSTALL)
 # Run time varibles
 SRCS := $(wildcard $(SRCDIR)/*.cpp)
 INCS := $(wildcard $(SRCDIR)/*.hpp)
@@ -221,8 +223,8 @@ exelib: setup $(OBJS) libs
 
 clean: 
 	@$(ECHO) "Cleaning up lib, bin, obj..."
-	@rm -rf $(OBJDIR) $(BINDIR) $(LIBDIR) *~ $(DOCDIR)/cs296_report_12.aux $(DOCDIR)/cs296_report_12.pdf $(DOCDIR)/cs296_report_12.dvi $(DOCDIR)/cs296_report_12.bbl $(DOCDIR)/cs296_report_12.blg $(DOCDIR)/cs296_report_12.log
-	@rm -rf $(PROJECT_ROOT)/data $(PROJECT_ROOT)/plots $(DOCDIR)/*.html
+	@rm -rf $(OBJDIR) $(BINDIR) $(LIBDIR) $(LIBDIR) *~ $(DOCDIR)/*.aux $(DOCDIR)/cs296_report_12.pdf $(DOCDIR)/*.dvi $(DOCDIR)/*.bbl $(DOCDIR)/*.blg $(DOCDIR)/*.log
+	@rm -rf $(PROJECT_ROOT)/data $(DOCDIR)/*.html
 	@$(ECHO) "Done"
 
 distclean:clean
@@ -237,18 +239,24 @@ doc:
 	@$(ECHO) "Done"
 	
 report: setup exe
-	@mkdir plots; \
-	mkdir data; \
-	cd scripts; \
-	python3 g12_gen_csv.py; \
-	python3 g12_gen_plots.py; \
-	python3 g12_gen_html.py; \
-	cd ..
+	@cd doc;\
+	pdflatex cs296_report_12.tex;\
+	bibtex cs296_report_12;\
+	pdflatex cs296_report_12.tex;\
+	pdflatex cs296_report_12.tex;
 	
 dist: distclean
-	@$(CD) ../
-	@tar czf cs296_g12_project.tar.gz cs296_base_code html
+	@$(CD) ../;\
+	tar czf cs296_g12_project.tar.gz cs296_base_code html;\
+	echo "Created Distributable file"
 	
-install: setup exe doc report
+install: setup exe
+	@mkdir -p $(INSDIR)
+	@$(CD) $(INSDIR);\
+	$(CP) -rf $(BINDIR)/$(TARGET) ./;\
+	$(CP) -rf $(DOCDIR) ./;\
+	$(CP) -rf $(PROJECT_ROOT)/scripts ./;\
+	echo "installed in the ";\
+	echo $(INSDIR);
 
 

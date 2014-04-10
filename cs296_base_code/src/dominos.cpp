@@ -47,15 +47,19 @@ namespace cs296
 	b2Body* stopper;
 	b2Body* heavybody;
 	b2Body* trapsec;
+	b2Body* box1;
+	b2Body* conveyer[100];
+	b2Body* top;
+	b2Body* sling;
+	b2Body* circleonbottom;
    void dominos_t::keyboard(unsigned char key)
 {
 	if(key=='d'){	
 		b2Vec2 pos;
 		pos.Set(0.0,0.0);
-		circleontrap->SetTransform(pos,circleontrap->GetAngle()-(5*PI/180));
+		circleontrap->SetTransform(pos,circleontrap->GetAngle()-(10*PI/180));
 	}
 	else if(key=='m'){
-		//m_world->DestroyBody(stopper);
 		b2CircleShape circle;
 		circle.m_radius = 0.5f;
 		b2FixtureDef ballfd;
@@ -82,9 +86,31 @@ namespace cs296
 	}
 	else if(key == 'l'){
 		m_world->DestroyBody(stopper);
+		top->ApplyTorque( -20000.0f,true);
+		b2Vec2 aass;
+		aass.Set(-200.0,0);
+		sling->ApplyLinearImpulse(aass,circleonbottom->GetPosition(),true);
 	}
 	else if(key == 'i'){
-		heavybody->ApplyLinearImpulse(b2Vec2(-2000,0),heavybody->GetWorldCenter(),true);
+		b2CircleShape circle;
+		circle.m_radius = 2.0f;
+		b2FixtureDef ballfd;
+		ballfd.shape = &circle;
+		ballfd.density = 1.0f;
+		ballfd.friction = 100.0f;
+		ballfd.restitution = 0.01f;
+		b2BodyDef ballbd;
+		b2Vec2 ancr;
+		b2Vec2 hello=box1->GetPosition();
+		ancr.Set(hello.x,hello.y);
+		ballbd.type = b2_dynamicBody;
+		ballbd.position.Set(ancr.x,ancr.y);
+		heavybody = m_world->CreateBody(&ballbd);
+		ballfd.filter.groupIndex = -1;
+		ballfd.filter.categoryBits = 0x000D	;
+		ballfd.filter.maskBits = 0x000E;
+		heavybody->CreateFixture(&ballfd);
+		
 	}
 }
 
@@ -111,7 +137,7 @@ namespace cs296
       shape.SetAsBox(90,90,b2Vec2(0.0f, -90.0f),0.0);
       b2FixtureDef groundfd;
       groundfd.shape = &shape;
-      groundfd.friction = 1.0f;
+      groundfd.friction = 0.01f;
       groundfd.restitution = 0.0f;
       groundfd.filter.categoryBits = 0x001F;
       groundfd.filter.maskBits = 0xFFFF;
@@ -141,14 +167,28 @@ namespace cs296
       ground = m_world->CreateBody(&bd);
       b2FixtureDef ballfd;
       ballfd.shape = &shape;
-      ballfd.density = 0.0f;
+      ballfd.density = 10.0f;
+      ballfd.filter.groupIndex = -1;
       ballfd.filter.categoryBits = 0x0001;
       ballfd.filter.maskBits = 0xFFFF;
       ground->CreateFixture(&ballfd);
       
       
     }
-    
+    //spherebody for the left wheel of the trebuchete
+    //spherebody2 for the right wheel of the terbuchete
+    /*! \par Making Wheels for the trebuchete
+     * variable spherebody and spherebody2 <br>
+     * Date type b2Body* <br>
+     * pointer to the spherebody and spherebody2 <br>
+     * variable circle :: <br>
+     * Data type is b2CircleShape <br>
+     * radius : 3, and centers of the circles are (-15.0f,3.0f) and (15.0f,3.0f) <br>
+     * variable ballfd <br>
+     * Data type b2FixtureDef <br>
+     * variable ballbd <br>
+     * Data type b2BodyDef <br>
+     */
     b2Body* spherebody;
     b2Body* spherebody2;
     b2Body* spherebody3;
@@ -158,11 +198,12 @@ namespace cs296
 
       b2FixtureDef ballfd;
       ballfd.shape = &circle;
-      ballfd.density = 0.01f;
+      ballfd.density = 10.0f;
       ballfd.friction = 0.5f;
       ballfd.restitution = 0.01f;
+      ballfd.filter.groupIndex = -1;
       ballfd.filter.categoryBits = 0x0001;
-      ballfd.filter.maskBits =0xFFFF;
+      ballfd.filter.maskBits =0x0008;
       b2BodyDef ballbd;
       ballbd.type = b2_dynamicBody;
       ballbd.position.Set(-15, 3.0f);
@@ -177,9 +218,18 @@ namespace cs296
       spherebody3 = m_world->CreateBody(&ballbd);
       ballfd.filter.categoryBits = 0x0004;
       ballfd.filter.maskBits = 0xFFFF;
-      spherebody3->CreateFixture(&ballfd);
-      spherebody3->ApplyLinearImpulse(b2Vec2(00,0) , spherebody->GetWorldCenter(),true);
+      //spherebody3->CreateFixture(&ballfd);
+      //spherebody3->ApplyLinearImpulse(b2Vec2(00,0) , spherebody->GetWorldCenter(),true);
 	}
+	
+	//Revolutejoint for spherebody,spherebody2 and horizontal shelf
+	/*! \par variable jointDef <br>
+	 * Datatype b2RevoluteJoint <br>
+	 * variable anchor <br>
+	 * Datatype b2Vec2 <br>
+	 * variable jointDef2 <br>
+	 * Datatype b2RevoluteJointDef <br>
+	 */
 	{
 		b2RevoluteJointDef jointDef;
 		b2Vec2 anchor;
@@ -194,6 +244,14 @@ namespace cs296
 		
 	}
 	
+	//Make vertical rod
+	/*! \par variable perpen <br>
+	 * Data type b2Body* <br>
+	 * variable bd <br>
+	 * Data type b2BodyDef <br>
+	 * variable b2FixtureDef <br>
+	 * Data type b2FixuteDef <br>
+	 */
 	b2Body* perpen;
     {
       b2PolygonShape shape;
@@ -205,20 +263,40 @@ namespace cs296
       perpen = m_world->CreateBody(&bd);
       b2FixtureDef ballfd;
       ballfd.shape = &shape;
-      ballfd.density = 0.0f;
+      ballfd.density = 10.0f;
       ballfd.filter.categoryBits = 0x0003;
+      ballfd.filter.groupIndex=-2;
       ballfd.filter.maskBits = 0xFFFF & ~0x0008 & ~0x0009 & ~0x000B & ~0x000D & ~0x000E;
       perpen->CreateFixture(&ballfd);
     }
 	
+	//Revolutejoint for ground and vertical line
+	/*! \par variable jointDef <br>
+	 * Datatype b2RevoluteJoint <br>
+	 * variable anchor <br>
+	 * Datatype B2Vec2 <br>
+	 */
 	{
-		b2RevoluteJointDef jointDef;
+		b2WeldJointDef jointDef;
 		b2Vec2 anchor;
 		anchor.Set(0,4);
 		jointDef.Initialize(ground,perpen,anchor);
 		m_world->CreateJoint(&jointDef);
 	}
 	
+	//Making frame (digonal line for the trebochete)
+	/*! \par
+	 * Variable trapfir <br>
+	 * Datatype b2Body* <br>
+	 * variable varitices[4] (vector of length 4) <br>
+	 * Datatype b2Vec2 <br>
+	 * variable polygon  <br> 
+	 * Datatype b2PolygonShape <br>
+	 * variable bd <br>
+	 * data type b2BodyDef <br>
+	 * variable ballfd <br>
+	 * Datatype d2FixtureDef <br>
+	  */
 	b2Body* trapfir;
     {
 		b2Vec2 vertices[4];
@@ -235,21 +313,41 @@ namespace cs296
 		trapfir = m_world->CreateBody(&bd);
 		b2FixtureDef ballfd;
 		ballfd.shape=&polygon;
-		ballfd.density=0.0f;
+		ballfd.density=10.0f;
+		ballfd.filter.groupIndex = -1;
 		ballfd.filter.categoryBits = 0x0004;
 		ballfd.filter.maskBits = 0x0001 || 0x0003;
 		trapfir->CreateFixture(&ballfd);
     }
-    
+    /*! \par
+     * variable jDef <br>
+     * Datatype b2RevolutejointDef <br>
+     * variable anchor <br>
+     * Datatype b2Vec2 <br>
+     */
     {
-		b2RevoluteJointDef jDef;
+		b2WeldJointDef jDef;
 		b2Vec2 anchor;
 		anchor.Set(9.75,4);
 		jDef.Initialize(ground,trapfir,anchor);
 		jDef.collideConnected=true;
 		m_world->CreateJoint(&jDef);
 	}
-	
+	//making the revolutjoint between ground and trapfir(digonal line,right)
+	/*! \par
+	 * variable varitices[4] (vector of length 4) <br>
+	 * Datatype b2Vec2 <br>
+	 * variable count <br>
+	 * datatype int <br>
+	 * variable polygon  <br> 
+	 * Datatype b2PolygonShape <br>
+	 * variable ballfd <br>
+	 * datatype  b2FixtureDef <br>
+	 * variable bd <br>
+	 * data type b2BodyDef <br>
+	 * variable ballfd <br>
+	 * Datatype d2FixtureDef <br>
+	  */
     {
 		
 		b2Vec2 vertices[4];
@@ -266,22 +364,37 @@ namespace cs296
 		trapsec = m_world->CreateBody(&bd);
 		b2FixtureDef ballfd;
 		ballfd.shape=&polygon;
-		ballfd.density=0.0f;
+		ballfd.density=10.0f;
 		ballfd.filter.groupIndex=-1;
 		ballfd.filter.categoryBits = 0x0004;
 		ballfd.filter.maskBits = 0x0001 || 0x0003;
 		trapsec->CreateFixture(&ballfd);
     }
-    
+    //revolutejoint between trapsec and ground
+    /*! \par
+	 * variable jointDef <br>
+	 * Datatype b2Revolutejoint <br>
+	 * variable anchor <br>
+	 * Datatype b2Vec2 <br>
+	  */
     {
-		b2RevoluteJointDef jointDef;
+		b2WeldJointDef jointDef;
 		b2Vec2 anchor;
 		anchor.Set(-9.75,4);
 		jointDef.Initialize(ground,trapsec,anchor);
 		m_world->CreateJoint(&jointDef);
 	}
-	
-	b2Body* top;
+	//Making beam
+	/*! \par
+	 * variable top <br>
+	 * datatype b2Body* <br>
+	 * variable bd <br>
+	 * Datatype b2BodyDef <br>
+	 * variable shape <br>
+	 * datatype b2PolygonShape <br>
+	 * variable ballfd <br>
+	 * datatype b2Fixture
+	 */
 	{
 		b2BodyDef bd;
 		bd.type = b2_dynamicBody;
@@ -291,8 +404,9 @@ namespace cs296
 		shape.SetAsBox(10.0f, 0.75f ,b2Vec2(-10.0f,0.0f) , 0.0);
 		b2FixtureDef ballfd;
 		ballfd.shape=&shape;
-		ballfd.density=0.5f;
+		ballfd.density=0.01f;
 		ballfd.restitution=0.01f;
+		ballfd.filter.groupIndex = -2;
 		ballfd.filter.categoryBits = 0x0008;
 		ballfd.filter.maskBits = 0x0002;
 		top->CreateFixture(&ballfd);
@@ -301,11 +415,17 @@ namespace cs296
 		ballfd.shape=&shape;
 		top->CreateFixture(&ballfd);
 		
-		shape.SetAsBox(5.0f, 1.5f ,b2Vec2(5.0f,0.0f) , 0.0);
+		shape.SetAsBox(5.0f, 2.0f ,b2Vec2(5.0f,0.0f) , 0.0);
 		ballfd.shape=&shape;
 		top->CreateFixture(&ballfd);
 	}
-	
+	//revolutejoint between vartical line and beam
+	/*! \par
+	 * variable jointDef <br>
+	 * datatype b2RevoluteJointDef <br>
+	 * variable anchor <br>
+	 * datatype b2Vec2 <br>
+	 */
 	{
 		b2RevoluteJointDef jointDef;
 		b2Vec2 anchor;
@@ -317,11 +437,25 @@ namespace cs296
 		m_world->CreateJoint(&jointDef);
 	}
 	
+	// making circles for the beam
+	/*! \par
+	 * variable circleontop1 <br>
+	 * varibale circleontop2 <br>
+	 * datatype b2Body* <br>
+	 * variable circle <br>
+	 * datatype b2CircleShape <br>
+	 * variable ballfd <br>
+	 * datatype b2FixtureDef <br>
+	 * variable ballbd <br>
+	 * datatype b2BodyDef <br>
+	 * variable ancr <br>
+	 * datatype ancr <br>
+	 */
 	b2Body* circleontop1;
 	b2Body* circleontop2;
 	{
 		b2CircleShape circle;
-		circle.m_radius = 0.8f;
+		circle.m_radius = 1.65f;
 		b2FixtureDef ballfd;
 		ballfd.shape = &circle;
 		ballfd.density = 0.01f;
@@ -333,6 +467,8 @@ namespace cs296
 		ballbd.type = b2_dynamicBody;
 		ballbd.position.Set(ancr.x,ancr.y);
 		circleontop1 = m_world->CreateBody(&ballbd);
+		ballfd.filter.groupIndex = -1;
+		ballfd.filter.groupIndex=-2;
 		ballfd.filter.categoryBits = 0x0009;
 		ballfd.filter.maskBits = 0x000B;
 		circleontop1->CreateFixture(&ballfd);
@@ -343,9 +479,14 @@ namespace cs296
 		circleontop2 = m_world->CreateBody(&ballbd);
 		circleontop2->CreateFixture(&ballfd);
 	}
-	
+	//revolute joint between top and circleontop1
+	/*! \par variable jointDef<br>
+	 * datatype b2RevoluteJointDef <br>
+	 * variable anchor <br>
+	 * datatype b2Vec2 <br>
+	 */
 	{
-		b2RevoluteJointDef jointDef;
+		b2WeldJointDef jointDef;
 		b2Vec2 anchor;
 		anchor.Set(9,18);
 		jointDef.Initialize(top,circleontop1,anchor);
@@ -354,8 +495,20 @@ namespace cs296
 		jointDef.Initialize(top,circleontop2,anchor);
 		m_world->CreateJoint(&jointDef);
 	}
-	
-	b2Body* box1;
+	//making the container with chain
+	/*! \par variable box1 <br>
+	 * datatype b2BodyDef <br>
+	 * variables  bs1,bs2,bs3 <br>
+	 * datatype b2PolygonShape <br>
+	 * variable fd1 <br>
+	 * datatype b2FixtureDef <br>
+	 * variable fd2 <br>
+	 * datatype b2FixtureDef <br>
+	 * vector vs[100] <br>
+	 * datatype b2Vec2 <br>
+	 * vector conveyer[100] <br>
+	 * datatype b2Body*
+	 */
 	{
 		b2BodyDef bd;
 		bd.type = b2_dynamicBody;
@@ -369,36 +522,42 @@ namespace cs296
 		fd1.friction = 0.5;
 		fd1.restitution = 0.f;
 		fd1.shape = &bs1;
+		fd1.filter.groupIndex=-2;
 		fd1.filter.categoryBits = 0x000E;
-		fd1.filter.maskBits = 0x000B || 0x000E;
+		fd1.filter.maskBits = 0x000D;
 		bs2.SetAsBox(0.2,2.5, b2Vec2(-3.0f,0.0f), 0);
 		b2FixtureDef fd2;
 		fd2.density = 0.001;
 		fd2.friction = 0.5;
 		fd2.restitution = 0.f;
 		fd2.shape = &bs2;
+		fd2.filter.groupIndex=-2;
 		fd2.filter.categoryBits = 0x000E;
-		fd2.filter.maskBits = 0x000B || 0x000E;
+		fd2.filter.maskBits = 0x000D;
 		bs3.SetAsBox(0.2,2.5, b2Vec2(3.0f,0.0f), 0);
 		b2FixtureDef fd3;
 		fd3.density = 0.001;
 		fd3.friction = 0.5;
 		fd3.restitution = 0.f;
 		fd3.shape = &bs3;
+		fd3.filter.groupIndex=-2;
 		fd3.filter.categoryBits = 0x000E;
-		fd3.filter.maskBits = 0x000B || 0x000E;
+		fd3.filter.maskBits = 0x000D;
 		box1->CreateFixture(&fd1);
 		box1->CreateFixture(&fd2);
 		box1->CreateFixture(&fd3);
 		
 		
-		b2Vec2 vs[100];
+		
+		
+		/*b2Vec2 vs[100];
 		///chain body
-		b2Body* conveyer[100];
+		
 
 		b2FixtureDef chainfd;
+		chainfd.filter.groupIndex = -1;
 		chainfd.filter.categoryBits = 0x000B;
-		chainfd.filter.maskBits = 0x0009 || 0x000A || 0x000E;
+		chainfd.filter.maskBits = ~0x0008;
 		b2PolygonShape chainshape;
 		float wid=0.25,heig=0.1;
 		chainshape.SetAsBox(wid, heig);
@@ -411,7 +570,7 @@ namespace cs296
 
 		///leftmost vertical
 		chainshape.SetAsBox(heig, wid);
-		 for (int i = 0; i < 6; ++i)
+		 for (int i = 0; i < 8; ++i)
 		{
 		vs[i].Set(6.0f,16.0f+i*(2*wid));
 		chainDef.position.Set(6.0f,16.25f+i*(2*wid));
@@ -423,25 +582,25 @@ namespace cs296
 		chainshape.SetAsBox(wid, heig);
 		 for (int i = 0; i < 12; ++i)
 		{
-		vs[i+6].Set(6.f+(2*wid)*i,19.1f);
-		chainDef.position.Set(6.25f+(2*wid)*i,19.1f);
-		conveyer[i+6]=m_world->CreateBody(&chainDef);
-		conveyer[i+6]->CreateFixture(&chainfd);
+		vs[i+8].Set(6.f+(2*wid)*i,20.05f);
+		chainDef.position.Set(6.25f+(2*wid)*i,20.05f);
+		conveyer[i+8]=m_world->CreateBody(&chainDef);
+		conveyer[i+8]->CreateFixture(&chainfd);
 		}
 
 		///rightmost vertical
 		chainshape.SetAsBox(heig, wid);
-		 for (int i = 0; i < 6; ++i)
+		 for (int i = 0; i < 8; ++i)
 		{
-		vs[i+18].Set(12.0f,19.0f-i*(2*wid));
-		chainDef.position.Set(12.0f,18.75f-i*(2*wid));
-		conveyer[i+18]=m_world->CreateBody(&chainDef);
-		conveyer[i+18]->CreateFixture(&chainfd);
+		vs[i+20].Set(12.0f,20.0f-i*(2*wid));
+		chainDef.position.Set(12.0f,19.75f-i*(2*wid));
+		conveyer[i+20]=m_world->CreateBody(&chainDef);
+		conveyer[i+20]->CreateFixture(&chainfd);
 		}
 		
 		///Adding Revolute joint between chain units
-		b2RevoluteJointDef jointDef3;
-		 for(int i=1;i<24;i++)
+		b2WeldJointDef jointDef3;
+		 for(int i=1;i<28;i++)
 		{
 		jointDef3.Initialize(conveyer[i-1], conveyer[i],vs[i]);
 		m_world->CreateJoint(&jointDef3);
@@ -451,43 +610,57 @@ namespace cs296
 		anchorright.Set(12,16);
 		jointDef3.Initialize(conveyer[0], box1,anchorleft);
 		m_world->CreateJoint(&jointDef3);
-		jointDef3.Initialize(conveyer[23],box1,anchorright);
+		jointDef3.Initialize(conveyer[27],box1,anchorright);
 		m_world->CreateJoint(&jointDef3);
-		
-		
-		heig=0.2;
+		anchorleft.Set(9,19.65);
+		b2WeldJointDef joint;
+		joint.Initialize(conveyer[13], circleontop1,anchorleft);
+		m_world->CreateJoint(&joint);
+		joint.Initialize(conveyer[14], circleontop1,anchorleft);
+		m_world->CreateJoint(&joint);
+		heig=0.05;
 		///leftmost sling
 		chainshape.SetAsBox(heig, wid);
 		 for (int i = 0; i < 16; ++i)
 		{
-		vs[i+24].Set(-26.7f,11.65f+i*(2*wid));
-		chainDef.position.Set(-26.7f,11.9f+i*(2*wid));
-		conveyer[i+24]=m_world->CreateBody(&chainDef);
-		conveyer[i+24]->CreateFixture(&chainfd);
+		vs[i+28].Set(-26.55f,11.65f+i*(2*wid));
+		chainDef.position.Set(-26.55f,11.9f+i*(2*wid));
+		conveyer[i+28]=m_world->CreateBody(&chainDef);
+		conveyer[i+28]->CreateFixture(&chainfd);
 		}
 		
 		///top sling
 		chainshape.SetAsBox(wid, heig);
 		 for (int i = 0; i < 10; ++i)
 		{
-		vs[i+40].Set(-26.5f+(2*wid)*i,19.65f);
-		chainDef.position.Set(-26.25f+(2*wid)*i,19.85f);
-		conveyer[i+40]=m_world->CreateBody(&chainDef);
-		conveyer[i+40]->CreateFixture(&chainfd);
+		vs[i+44].Set(-26.5f+(2*wid)*i,19.7f);
+		chainDef.position.Set(-26.25f+(2*wid)*i,19.7f);
+		conveyer[i+44]=m_world->CreateBody(&chainDef);
+		conveyer[i+44]->CreateFixture(&chainfd);
 		}
 		
 		///rightmost sling
 		chainshape.SetAsBox(heig, wid);
 		 for (int i = 0; i < 16; ++i)
 		{
-		vs[i+50].Set(-21.3f,19.65f-i*(2*wid));
-		chainDef.position.Set(-21.3f,19.4f-i*(2*wid));
-		conveyer[i+50]=m_world->CreateBody(&chainDef);
-		conveyer[i+50]->CreateFixture(&chainfd);
+		vs[i+54].Set(-21.45f,19.65f-i*(2*wid));
+		chainDef.position.Set(-21.45f,19.4f-i*(2*wid));
+		conveyer[i+54]=m_world->CreateBody(&chainDef);
+		conveyer[i+54]->CreateFixture(&chainfd);
 		}
 		
+		*/
 		
-		b2Body* sling;
+		//making sling 
+		/*! \par variable sling <br>
+		 * datatype b2Body* <br>
+		 * variable shape <br>
+		 * datatype b2EdgeShape <br>
+		 * variable groundfd <br>
+		 * datatype b2FixtureDef <br>
+		 * variable bd <br>
+		 * datatype b2BodyDef <br>
+		 */
 		{
 			b2EdgeShape shape;
 			shape.Set(b2Vec2(-20.5f, 9.65f), b2Vec2(-20.5f, 7.25f));
@@ -499,8 +672,10 @@ namespace cs296
 			groundfd.filter.categoryBits = 0x000A;
 			groundfd.filter.maskBits = 0x000C;
 			b2BodyDef bd;
-			bd.position.Set(-1.0f,2.0f);
+			bd.position.Set(-1.0f,-4.0f);
 			bd.type = b2_dynamicBody;
+			bd.fixedRotation = false;
+			bd.gravityScale = 10.0f;
 			sling = m_world->CreateBody(&bd);
 			sling->CreateFixture(&groundfd);
 			
@@ -540,10 +715,34 @@ namespace cs296
 			groundfd.shape = &shape;
 			sling->CreateFixture(&groundfd);
 		}
+		b2Vec2 first,second,third,fourth;
+		first.Set(-26.5,5.65);
+		second.Set(-21.5,5.65);
+		third.Set(-25.65,18.0);
+		fourth.Set(-22.35,18.0);
+		b2DistanceJointDef jointDef;
+		jointDef.Initialize(sling, circleontop2, first, third);
+		jointDef.collideConnected = true;
+		m_world->CreateJoint(&jointDef);
+		jointDef.Initialize(sling, circleontop2, second, fourth);
+		jointDef.collideConnected = true;
+		m_world->CreateJoint(&jointDef);
 		
+		first.Set(6.0,16.0);
+		second.Set(12.0,16.0);
+		third.Set(7.35,18.0);
+		fourth.Set(10.65,18.0);
+
+		jointDef.Initialize(box1, circleontop1, first, third);
+		jointDef.collideConnected = true;
+		m_world->CreateJoint(&jointDef);
+		jointDef.Initialize(box1, circleontop1, second, fourth);
+		jointDef.collideConnected = true;
+		m_world->CreateJoint(&jointDef);
+
 		///Adding Revolute joint between chain units of sling
-		b2RevoluteJointDef	 thisjoint;
-		 for(int i=25;i<66;i++)
+		/*b2WeldJointDef thisjoint;
+		 for(int i=29;i<70;i++)
 		{
 		thisjoint.Initialize(conveyer[i-1], conveyer[i],vs[i]);
 		m_world->CreateJoint(&thisjoint);
@@ -551,13 +750,91 @@ namespace cs296
 		b2WeldJointDef weld;
 		anchorleft.Set(-26.5,11.65);
 		anchorright.Set(-21.5,11.65);
-		weld.Initialize(conveyer[24], sling,anchorleft);
+		weld.Initialize(conveyer[28], sling,anchorleft);
 		m_world->CreateJoint(&weld);
-		weld.Initialize(conveyer[65],sling,anchorright);
+		weld.Initialize(conveyer[69],sling,anchorright);
 		m_world->CreateJoint(&weld);
+		
+		 for(int i=29;i<70;i++)
+		{
+		thisjoint.Initialize(conveyer[i-1], conveyer[i],vs[i]);
+		m_world->CreateJoint(&thisjoint);
+		}
+		anchorleft.Set(-26.5,11.65);
+		anchorright.Set(-21.5,11.65);
+		weld.Initialize(conveyer[28], sling,anchorleft);
+		m_world->CreateJoint(&weld);
+		weld.Initialize(conveyer[69],sling,anchorright);
+		m_world->CreateJoint(&weld);
+		
+		 for(int i=29;i<70;i++)
+		{
+		thisjoint.Initialize(conveyer[i-1], conveyer[i],vs[i]);
+		m_world->CreateJoint(&thisjoint);
+		}
+		anchorleft.Set(-26.5,11.65);
+		anchorright.Set(-21.5,11.65);
+		weld.Initialize(conveyer[28], sling,anchorleft);
+		m_world->CreateJoint(&weld);
+		weld.Initialize(conveyer[69],sling,anchorright);
+		m_world->CreateJoint(&weld);
+		
+		 for(int i=29;i<70;i++)
+		{
+		thisjoint.Initialize(conveyer[i-1], conveyer[i],vs[i]);
+		m_world->CreateJoint(&thisjoint);
+		}
+		anchorleft.Set(-26.5,11.65);
+		anchorright.Set(-21.5,11.65);
+		weld.Initialize(conveyer[28], sling,anchorleft);
+		m_world->CreateJoint(&weld);
+		weld.Initialize(conveyer[69],sling,anchorright);
+		m_world->CreateJoint(&weld);
+		
+		 for(int i=29;i<70;i++)
+		{
+		thisjoint.Initialize(conveyer[i-1], conveyer[i],vs[i]);
+		m_world->CreateJoint(&thisjoint);
+		}
+		anchorleft.Set(-26.5,11.65);
+		anchorright.Set(-21.5,11.65);
+		weld.Initialize(conveyer[28], sling,anchorleft);
+		m_world->CreateJoint(&weld);
+		weld.Initialize(conveyer[69],sling,anchorright);
+		m_world->CreateJoint(&weld);
+		
+		b2RevoluteJointDef thisj;
+		 for(int i=29;i<70;i++)
+		{
+		thisj.Initialize(conveyer[i-1], conveyer[i],vs[i]);
+		m_world->CreateJoint(&thisj);
+		}
+		b2WeldJointDef weldjj;
+		anchorleft.Set(-26.5,11.65);
+		anchorright.Set(-21.5,11.65);
+		weldjj.Initialize(conveyer[28], sling,anchorleft);
+		m_world->CreateJoint(&weldjj);
+		weldjj.Initialize(conveyer[69],sling,anchorright);
+		m_world->CreateJoint(&weldjj);
+		
+		anchorleft.Set(-24.0,19.65);
+		joint.Initialize(conveyer[48], circleontop2,anchorleft);
+		m_world->CreateJoint(&joint);
+		joint.Initialize(conveyer[49], circleontop2,anchorleft);
+		m_world->CreateJoint(&joint);*/
 	}
 	
-	b2Body* circleonbottom;
+	//making circleonbottom for beam
+	/*! \par
+	 * variable circleonbottom <br>
+	 * datatype b2Body* <br>
+	 * variable circle <br>
+	 * datatype b2CircleShape <br>
+	 * variable ballbd <br>
+	 * datatype b2BodyDef <br>
+	 * variable ancr <br>
+	 * datatype b2Vec2 <br>
+	 */
 	{
 		b2CircleShape circle;
 		circle.m_radius = 2.0f;
@@ -568,15 +845,23 @@ namespace cs296
 		ballfd.restitution = 0.6f;
 		b2BodyDef ballbd;
 		b2Vec2 ancr;
-		ancr.Set(-24.0f,11.0f);
+		ancr.Set(-24.0f,5.0f);
 		ballbd.type = b2_dynamicBody;
+		ballbd.gravityScale = 10.0f;
 		ballbd.position.Set(ancr.x,ancr.y);
 		circleonbottom = m_world->CreateBody(&ballbd);
 		ballfd.filter.categoryBits = 0x000C;
 		ballfd.filter.maskBits = 0x000A;
 		circleonbottom->CreateFixture(&ballfd);
 	}
-	
+	//making the toptop.
+	/*! variable toptop <br>
+	 * datatype b2Body* <br>
+	 * variable shape <br>
+	 * datatype b2PolygonShape <br>
+	 * variable bd <br>
+	 * datatyep b2BodyDef <br>
+	 */
 	b2Body* toptop;
     {
       b2PolygonShape shape;
@@ -590,9 +875,16 @@ namespace cs296
       ballfd.shape = &shape;
       ballfd.density = 0.001f;
       ballfd.filter.categoryBits = 0x00FF;
-      ballfd.filter.maskBits = ~0x0FFF;
+      ballfd.filter.maskBits = 0x001F;
       toptop->CreateFixture(&ballfd);
     }
+    
+    //making weldjoint between top and toptop
+    /*! \par variable jointDef <br>
+     * datatype b2WeldJointDef <br>
+     * variable anchor <br>
+     * datatype b2Vec2 <br>
+     */
 	{
 		b2WeldJointDef jointDef;
 		b2Vec2 anchor;
@@ -616,10 +908,19 @@ namespace cs296
 		ballbd.position.Set(ancr.x,ancr.y);
 		circleontrap = m_world->CreateBody(&ballbd);
 		ballfd.filter.categoryBits = 0x0005	;
-		ballfd.filter.maskBits = 0x000F;
+		ballfd.filter.maskBits = 0x001F;
 		circleontrap->CreateFixture(&ballfd);
 	}
-	
+	/*! \par
+	 * variable circleontrap<br>
+	 * datatype b2Body* <br>
+	 * variable circle <br>
+	 * datatype b2CircleShape <br>
+	 * variable ballbd <br>
+	 * datatype b2BodyDef <br>
+	 * variable ancr <br>
+	 * datatype b2Vec2 <br>
+	 */
 	{
 			b2PolygonShape shape;
 			shape.SetAsBox(0.4,1.0,b2Vec2(0.0,2.5),0.0);
@@ -629,7 +930,7 @@ namespace cs296
 			groundfd.friction = 1.0f;
 			groundfd.restitution = 0.0f;
 			groundfd.filter.categoryBits = 0x0006;
-			groundfd.filter.maskBits = 0x0007;// & ~0x00FF;
+			groundfd.filter.maskBits =0x0002;
 			circleontrap->CreateFixture(&groundfd);
 			
 			shape.SetAsBox(1.0,0.4,b2Vec2(2.5,0.0),0.0);
@@ -724,13 +1025,13 @@ namespace cs296
 		m_world->CreateJoint(&weldjoint);
 	}
 	
-	b2Body* horizontal;
+	/*b2Body* horizontal;
 	{
       b2PolygonShape shape;
-      shape.SetAsBox(5.0f, 0.2f);
+      shape.SetAsBox(4.0f, 0.2f);
       
       b2BodyDef bd;
-      bd.position.Set(0.0f, 32.0f);
+      bd.position.Set(-2.0f, 32.0f);
       horizontal = m_world->CreateBody(&bd);
       b2FixtureDef ballfd;
       ballfd.shape = &shape;
@@ -738,27 +1039,9 @@ namespace cs296
       ballfd.filter.categoryBits = 0x0002;
       ballfd.filter.maskBits = 0x000D;
       horizontal->CreateFixture(&ballfd);
-    }
+    }*/
     
-    {
-		b2CircleShape circle;
-		circle.m_radius = 2.0f;
-		b2FixtureDef ballfd;
-		ballfd.shape = &circle;
-		ballfd.density = 100.0f;
-		ballfd.friction = 100.0f;
-		ballfd.restitution = 0.01f;
-		b2BodyDef ballbd;
-		b2Vec2 ancr;
-		ancr.Set(0.0f,34.25f);
-		ballbd.type = b2_dynamicBody;
-		ballbd.position.Set(ancr.x,ancr.y);
-		heavybody = m_world->CreateBody(&ballbd);
-		ballfd.filter.categoryBits = 0x000D	;
-		ballfd.filter.maskBits = 0x0002;
-		heavybody->CreateFixture(&ballfd);
-	}
-		
+    
   }
   
   
