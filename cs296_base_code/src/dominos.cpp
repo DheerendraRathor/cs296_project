@@ -52,7 +52,7 @@ namespace cs296
 	if(key=='d'){	
 		b2Vec2 pos;
 		pos.Set(0.0,0.0);
-		circleontrap->SetTransform(pos,circleontrap->GetAngle()-(10*PI/180));
+		circleontrap->SetTransform(pos,circleontrap->GetAngle()-(5*PI/180));
 	}
 	else if(key=='m'){
 		//m_world->DestroyBody(stopper);
@@ -70,8 +70,8 @@ namespace cs296
 		ballbd.type = b2_dynamicBody;
 		ballbd.position.Set(ancr.x,ancr.y);
 		stopper = m_world->CreateBody(&ballbd);
-		ballfd.filter.categoryBits = 0x02FF	;
-		ballfd.filter.maskBits = 0x004F;
+		ballfd.filter.categoryBits = 0x0007	;
+		ballfd.filter.maskBits = 0x0006;
 		stopper->CreateFixture(&ballfd);
 		
 		b2WeldJointDef jointDef;
@@ -113,7 +113,7 @@ namespace cs296
       groundfd.shape = &shape;
       groundfd.friction = 1.0f;
       groundfd.restitution = 0.0f;
-      groundfd.filter.categoryBits = 0x0004;
+      groundfd.filter.categoryBits = 0x001F;
       groundfd.filter.maskBits = 0xFFFF;
       b2BodyDef bd;
       b1 = m_world->CreateBody(&bd);
@@ -143,7 +143,7 @@ namespace cs296
       ballfd.shape = &shape;
       ballfd.density = 0.0f;
       ballfd.filter.categoryBits = 0x0001;
-      ballfd.filter.maskBits = 0x0004;
+      ballfd.filter.maskBits = 0xFFFF;
       ground->CreateFixture(&ballfd);
       
       
@@ -162,7 +162,7 @@ namespace cs296
       ballfd.friction = 0.5f;
       ballfd.restitution = 0.01f;
       ballfd.filter.categoryBits = 0x0001;
-      ballfd.filter.maskBits =0x0003 | 0x0004;
+      ballfd.filter.maskBits =0xFFFF;
       b2BodyDef ballbd;
       ballbd.type = b2_dynamicBody;
       ballbd.position.Set(-15, 3.0f);
@@ -207,7 +207,7 @@ namespace cs296
       ballfd.shape = &shape;
       ballfd.density = 0.0f;
       ballfd.filter.categoryBits = 0x0003;
-      ballfd.filter.maskBits = 0x0004 | 0x0001 | 0x0002;
+      ballfd.filter.maskBits = 0xFFFF & ~0x0008 & ~0x0009 & ~0x000B & ~0x000D & ~0x000E;
       perpen->CreateFixture(&ballfd);
     }
 	
@@ -236,8 +236,8 @@ namespace cs296
 		b2FixtureDef ballfd;
 		ballfd.shape=&polygon;
 		ballfd.density=0.0f;
-		ballfd.filter.categoryBits = 0x0002;
-		ballfd.filter.maskBits = 0x0004 | 0x0001 | 0x0003;
+		ballfd.filter.categoryBits = 0x0004;
+		ballfd.filter.maskBits = 0x0001 || 0x0003;
 		trapfir->CreateFixture(&ballfd);
     }
     
@@ -268,8 +268,8 @@ namespace cs296
 		ballfd.shape=&polygon;
 		ballfd.density=0.0f;
 		ballfd.filter.groupIndex=-1;
-		ballfd.filter.categoryBits = 0x0002;
-		ballfd.filter.maskBits = 0x0004 | 0x0001 | 0x0003;
+		ballfd.filter.categoryBits = 0x0004;
+		ballfd.filter.maskBits = 0x0001 || 0x0003;
 		trapsec->CreateFixture(&ballfd);
     }
     
@@ -293,8 +293,8 @@ namespace cs296
 		ballfd.shape=&shape;
 		ballfd.density=0.5f;
 		ballfd.restitution=0.01f;
-		ballfd.filter.categoryBits = 0x0003;
-		ballfd.filter.maskBits = 0x0004 | 0x0001 | 0x008F;
+		ballfd.filter.categoryBits = 0x0008;
+		ballfd.filter.maskBits = 0x0002;
 		top->CreateFixture(&ballfd);
 		
 		shape.SetAsBox(3.0f, 2.0f ,b2Vec2(-23.0f,0.0f) , 0.0);
@@ -333,8 +333,8 @@ namespace cs296
 		ballbd.type = b2_dynamicBody;
 		ballbd.position.Set(ancr.x,ancr.y);
 		circleontop1 = m_world->CreateBody(&ballbd);
-		ballfd.filter.categoryBits = 0x0008;
-		ballfd.filter.maskBits = 0x0004 | 0x0001 | 0x0002;
+		ballfd.filter.categoryBits = 0x0009;
+		ballfd.filter.maskBits = 0x000B;
 		circleontop1->CreateFixture(&ballfd);
 		
 		circle.m_radius = 1.65f;
@@ -369,24 +369,24 @@ namespace cs296
 		fd1.friction = 0.5;
 		fd1.restitution = 0.f;
 		fd1.shape = &bs1;
-		fd1.filter.categoryBits = 0x0FFF;
-		fd1.filter.maskBits = 0x0003;
+		fd1.filter.categoryBits = 0x000E;
+		fd1.filter.maskBits = 0x000B || 0x000E;
 		bs2.SetAsBox(0.2,2.5, b2Vec2(-3.0f,0.0f), 0);
 		b2FixtureDef fd2;
 		fd2.density = 0.001;
 		fd2.friction = 0.5;
 		fd2.restitution = 0.f;
 		fd2.shape = &bs2;
-		fd2.filter.categoryBits = 0x0FFF;
-		fd2.filter.maskBits = 0xFFFF & ~0x0001 & ~0x0002  & ~0x0004;
+		fd2.filter.categoryBits = 0x000E;
+		fd2.filter.maskBits = 0x000B || 0x000E;
 		bs3.SetAsBox(0.2,2.5, b2Vec2(3.0f,0.0f), 0);
 		b2FixtureDef fd3;
 		fd3.density = 0.001;
 		fd3.friction = 0.5;
 		fd3.restitution = 0.f;
 		fd3.shape = &bs3;
-		fd3.filter.categoryBits = 0x0FFF;
-		fd3.filter.maskBits = 0xFFFF & ~0x0002;	
+		fd3.filter.categoryBits = 0x000E;
+		fd3.filter.maskBits = 0x000B || 0x000E;
 		box1->CreateFixture(&fd1);
 		box1->CreateFixture(&fd2);
 		box1->CreateFixture(&fd3);
@@ -397,8 +397,8 @@ namespace cs296
 		b2Body* conveyer[100];
 
 		b2FixtureDef chainfd;
-		chainfd.filter.categoryBits = 0x0004;
-		chainfd.filter.maskBits = 0x0008;
+		chainfd.filter.categoryBits = 0x000B;
+		chainfd.filter.maskBits = 0x0009 || 0x000A || 0x000E;
 		b2PolygonShape chainshape;
 		float wid=0.25,heig=0.1;
 		chainshape.SetAsBox(wid, heig);
@@ -496,12 +496,11 @@ namespace cs296
 			groundfd.density = 0.01f;
 			groundfd.friction = 1.0f;
 			groundfd.restitution = 0.0f;
-			groundfd.filter.categoryBits = 0x0001;
-			groundfd.filter.maskBits = 0x0004 | 0x008F;
+			groundfd.filter.categoryBits = 0x000A;
+			groundfd.filter.maskBits = 0x000C;
 			b2BodyDef bd;
 			bd.position.Set(-1.0f,2.0f);
 			bd.type = b2_dynamicBody;
-			//bd.gravityScale = 0.2f;	
 			sling = m_world->CreateBody(&bd);
 			sling->CreateFixture(&groundfd);
 			
@@ -573,8 +572,8 @@ namespace cs296
 		ballbd.type = b2_dynamicBody;
 		ballbd.position.Set(ancr.x,ancr.y);
 		circleonbottom = m_world->CreateBody(&ballbd);
-		ballfd.filter.categoryBits = 0x008F;
-		ballfd.filter.maskBits = 0x000F | 0x0003;
+		ballfd.filter.categoryBits = 0x000C;
+		ballfd.filter.maskBits = 0x000A;
 		circleonbottom->CreateFixture(&ballfd);
 	}
 	
@@ -590,8 +589,8 @@ namespace cs296
       b2FixtureDef ballfd;
       ballfd.shape = &shape;
       ballfd.density = 0.001f;
-      ballfd.filter.categoryBits = 0x0003;
-      ballfd.filter.maskBits = 0x0004 | 0x0001 | 0x0002;
+      ballfd.filter.categoryBits = 0x00FF;
+      ballfd.filter.maskBits = ~0x0FFF;
       toptop->CreateFixture(&ballfd);
     }
 	{
@@ -616,8 +615,8 @@ namespace cs296
 		ballbd.type = b2_dynamicBody;
 		ballbd.position.Set(ancr.x,ancr.y);
 		circleontrap = m_world->CreateBody(&ballbd);
-		ballfd.filter.categoryBits = 0x004F	;
-		ballfd.filter.maskBits = 0x0004 || 0x00FF || 0x02FF;
+		ballfd.filter.categoryBits = 0x0005	;
+		ballfd.filter.maskBits = 0x000F;
 		circleontrap->CreateFixture(&ballfd);
 	}
 	
@@ -629,8 +628,8 @@ namespace cs296
 			groundfd.density = 0.01f;
 			groundfd.friction = 1.0f;
 			groundfd.restitution = 0.0f;
-			groundfd.filter.categoryBits = 0x002F;
-			groundfd.filter.maskBits = 0x0004;\
+			groundfd.filter.categoryBits = 0x0006;
+			groundfd.filter.maskBits = 0x0007;// & ~0x00FF;
 			circleontrap->CreateFixture(&groundfd);
 			
 			shape.SetAsBox(1.0,0.4,b2Vec2(2.5,0.0),0.0);
@@ -660,8 +659,8 @@ namespace cs296
 
 	{
 		b2FixtureDef chainfd;
-		chainfd.filter.categoryBits = 0x00FF;
-		chainfd.filter.maskBits =0xFFFF & ~0x0002;
+		chainfd.filter.categoryBits = 0x000F;
+		chainfd.filter.maskBits =0x0005 || 0x0008;
 		b2PolygonShape chainshape;
 		float wid=0.25,heig=0.05;
 		chainshape.SetAsBox(heig, wid);
@@ -731,13 +730,13 @@ namespace cs296
       shape.SetAsBox(5.0f, 0.2f);
       
       b2BodyDef bd;
-      bd.position.Set(15.0f, 18.0f);
+      bd.position.Set(0.0f, 32.0f);
       horizontal = m_world->CreateBody(&bd);
       b2FixtureDef ballfd;
       ballfd.shape = &shape;
       ballfd.density = 0.001f;
-      ballfd.filter.categoryBits = 0x04FF;
-      ballfd.filter.maskBits = 0x08FF & ~0x0FFF;
+      ballfd.filter.categoryBits = 0x0002;
+      ballfd.filter.maskBits = 0x000D;
       horizontal->CreateFixture(&ballfd);
     }
     
@@ -751,12 +750,12 @@ namespace cs296
 		ballfd.restitution = 0.01f;
 		b2BodyDef ballbd;
 		b2Vec2 ancr;
-		ancr.Set(15.0f,24.25f);
+		ancr.Set(0.0f,34.25f);
 		ballbd.type = b2_dynamicBody;
 		ballbd.position.Set(ancr.x,ancr.y);
 		heavybody = m_world->CreateBody(&ballbd);
-		ballfd.filter.categoryBits = 0x08FF	;
-		ballfd.filter.maskBits = 0x0FFF & ~0x0003 & ~0x0008 & ~0x0004;
+		ballfd.filter.categoryBits = 0x000D	;
+		ballfd.filter.maskBits = 0x0002;
 		heavybody->CreateFixture(&ballfd);
 	}
 		
