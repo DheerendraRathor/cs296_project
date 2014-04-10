@@ -35,6 +35,7 @@ DOCDIR = $(PROJECT_ROOT)/doc
 SRCS := $(wildcard $(SRCDIR)/*.cpp)
 INCS := $(wildcard $(SRCDIR)/*.hpp)
 OBJS := $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
+OBJS_DEBUG := $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 ALL_MAIN:= $(wildcard $(OBJDIR)/*[!main].o)
 
 
@@ -50,7 +51,8 @@ LIBS = -lBox2D -lglui -lglut -lGLU -lGL
 CPPFLAGS =-g -O3 -Wall -fno-strict-aliasing
 CPPFLAGS+=-I $(BOX2D_ROOT)/include -I $(GLUI_ROOT)/include
 LDFLAGS+=-L $(BOX2D_ROOT)/lib -L $(GLUI_ROOT)/lib
-
+CPPFLAGS_DEBUG =-g  -Wall -fno-strict-aliasing
+CPPFLAGS_DEBUG+=-I $(BOX2D_ROOT)/include -I $(GLUI_ROOT)/include
 .PHONY: setup clean doc report distclean
 
 # Default target
@@ -62,6 +64,7 @@ setup:
 	@$(MK) -p $(OBJDIR)
 	@$(MK) -p $(LIBDIR)
 	@$(MK) -p $(BINDIR)
+	@$(MK) -p $(PROJECT_ROOT)/data
 	@if test -d $(BOX2D_FOLDER) -a -d $(EXTLIB)/Box2D -a -e $(EXTLIB)/libBox2D.a;\
 	then $(ECHO) "Box 2D found installed";\
 	else $(ECHO) "You haven't installed Box2D...Let me do it for you."\
@@ -77,12 +80,67 @@ setup:
 	fi;
 	@$(ECHO) "Done"
 
+setup_release:
+	@$(ECHO) "setting up compilation now....please wait.."
+	@$(MK) -p $(OBJDIR)
+	@$(MK) -p $(LIBDIR)
+	@$(MK) -p $(BINDIR)
+	@$(MK) -p $(PROJECT_ROOT)/data
+	@if test -d $(BOX2D_FOLDER) -a -d $(EXTLIB)/Box2D -a -e $(EXTLIB)/libBox2D.a;\
+	then $(ECHO) "Box 2D found installed";\
+	else $(ECHO) "You haven't installed Box2D...Let me do it for you."\
+	&& $(CD) $(EXTSRC) \
+	&& $(TAR) $(UNTAR) Box2D.tgz \
+	&& $(CD) Box2D \
+	&& $(MK) -p build296 \
+	&& $(CD) build296 \
+	&& cmake -DCMAKE_BUILD_TYPE=Release ../ \
+	&& make \
+	&& make install \
+	&& $(CD) ../../../../;	\
+	fi;
+	@$(ECHO) "Done"
+	
+setup_debug:
+	@$(ECHO) "setting up compilation now....please wait.."
+	@$(MK) -p $(OBJDIR)
+	@$(MK) -p $(LIBDIR)
+	@$(MK) -p $(BINDIR)
+	@$(MK) -p $(PROJECT_ROOT)/data
+	@if test -d $(BOX2D_FOLDER) -a -d $(EXTLIB)/Box2D -a -e $(EXTLIB)/libBox2D.a;\
+	then $(ECHO) "Box 2D found installed";\
+	else $(ECHO) "You haven't installed Box2D...Let me do it for you."\
+	&& $(CD) $(EXTSRC) \
+	&& $(TAR) $(UNTAR) Box2D.tgz \
+	&& $(CD) Box2D \
+	&& $(MK) -p build296 \
+	&& $(CD) build296 \
+	&& cmake -DCMAKE_BUILD_TYPE=Debug ../ \
+	&& make \
+	&& make install \
+	&& $(CD) ../../../../;	\
+	fi;
+	@$(ECHO) "Done"
+	
+	
 -include $(OBJS:.o=.d)
+-include $(OBJS_DEBUG:.o=.d)
 
 #target for compiling .cpp into .o
 $(OBJS):$(OBJDIR)/%.o : $(SRCDIR)/%.cpp
 	@$(PRINTF) "Compiling: %25s" "$(notdir $<)"
 	@$(CC) $(CPPFLAGS) -c $< -o $@ -MD 2> temp.log || touch temp.err
+	@if test -e temp.err; \
+	then $(PRINTF) "%30s\n" "[Fix This Error]" && $(CAT) temp.log; \
+	elif test -s temp.log; \
+	then $(PRINTF) "%30s\n" "[Just a Warning, You can ignore it]" && $(CAT) temp.log; \
+	else $(PRINTF) "%30s\n" "[Complied Without Error]"; \
+	fi;
+	@$(RM) -f temp.log temp.err
+
+$(OBJS_DEBUG):$(OBJDIR)/%.o : $(SRCDIR)/%.cpp
+	@$(PRINTF) "Compiling: %25s" "$(notdir $<)"
+	@$(CC) $(CPPFLAGS_DEBUG) -c $< -o $@ -MD 2> temp.log || touch temp.err
 	@if test -e temp.err; \
 	then $(PRINTF) "%30s\n" "[Fix This Error]" && $(CAT) temp.log; \
 	elif test -s temp.log; \
@@ -101,6 +159,36 @@ exe:	setup $(OBJS)
 	else $(PRINTF) "%30s\n" "[Executable file made!]"; \
 	fi;
 	@$(RM) -f temp.log temp.err
+
+exe_release: distclean setup_release $(OBJS)
+	@$(PRINTF) "Building executable:%16s" "$(notdir $(BINDIR)/$(TARGET))"
+	@$(CC)  -O3 -o $(BINDIR)/$(TARGET) $(LDFLAGS) $(OBJS) $(LIBS) 2> temp.log || touch temp.err
+	@if test -e temp.err; \
+	then $(PRINTF) "%30s\n" "[Fix this Error]" && $(CAT) temp.log; \
+	elif test -s temp.log; \
+	then $(PRINTF) "%30s\n" "[Just a Warning, You can ignore it]" && $(CAT) temp.log; \
+	else $(PRINTF) "%30s\n" "[Executable file made!]"; \
+	fi;
+	@$(RM) -f temp.log temp.err
+
+exe_debug: distclean setup_debug $(OBJS_DEBUG)
+	@$(PRINTF) "Building executable:%16s" "$(notdir $(BINDIR)/$(TARGET))"
+	@$(CC)  -o $(BINDIR)/$(TARGET) $(LDFLAGS) $(OBJS_DEBUG) $(LIBS) 2> temp.log || touch temp.err
+	@if test -e temp.err; \
+	then $(PRINTF) "%30s\n" "[Fix this Error]" && $(CAT) temp.log; \
+	elif test -s temp.log; \
+	then $(PRINTF) "%30s\n" "[Just a Warning, You can ignore it]" && $(CAT) temp.log; \
+	else $(PRINTF) "%30s\n" "[Executable file made!]"; \
+	fi;
+	@$(RM) -f temp.log temp.err
+	
+release_prof:exe_release
+	@perf record -g -- $(BINDIR)/cs296_12_exe 10000 
+	@mv perf.data data/g12_release_prof.dat
+	
+debug_prof:exe_debug
+	@perf record -g -- $(BINDIR)/cs296_12_exe 10000 
+	@mv perf.data data/g12_debug_prof.dat
 
 #target for building library according to SHARED_LIB
 libs: 
@@ -133,7 +221,7 @@ exelib: setup $(OBJS) libs
 
 clean: 
 	@$(ECHO) "Cleaning up lib, bin, obj..."
-	@rm -rf $(PROJECT_ROOT)/my* *~ $(DOCDIR)/cs296_report_12.aux $(DOCDIR)/cs296_report_12.pdf $(DOCDIR)/cs296_report_12.dvi $(DOCDIR)/cs296_report_12.bbl $(DOCDIR)/cs296_report_12.blg $(DOCDIR)/cs296_report_12.log
+	@rm -rf $(OBJDIR) $(BINDIR) $(LIBDIR) *~ $(DOCDIR)/cs296_report_12.aux $(DOCDIR)/cs296_report_12.pdf $(DOCDIR)/cs296_report_12.dvi $(DOCDIR)/cs296_report_12.bbl $(DOCDIR)/cs296_report_12.blg $(DOCDIR)/cs296_report_12.log
 	@rm -rf $(PROJECT_ROOT)/data $(PROJECT_ROOT)/plots $(DOCDIR)/*.html
 	@$(ECHO) "Done"
 
